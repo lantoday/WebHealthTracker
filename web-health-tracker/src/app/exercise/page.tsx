@@ -1,10 +1,13 @@
 import React from "react";
-import Header from "../ui/header";
+import Layout from "./../ui/main-layout";
 
-export default async function Page() {
+const Exercise: React.FC = () => {
   return (
-    <>
-      <p>exercise page</p>
-    </>
+    <Layout>
+      Exercise Page
+      {/* Your content here */}
+    </Layout>
   );
-}
+};
+
+export default Exercise;

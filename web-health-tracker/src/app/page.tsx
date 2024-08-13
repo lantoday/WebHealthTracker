@@ -1,18 +1,13 @@
 import React from "react";
-import Header from "./ui/header";
-import Navbar from "./ui/navbar";
+import Layout from "./layout";
 import MainDashboard from "./ui/main-dashboard";
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <>
-      <Header />
-      <div className="container-fluid">
-        <div className="row">
-          <Navbar />
-          <MainDashboard />
-        </div>
-      </div>
-    </>
+    <Layout>
+      <MainDashboard />
+    </Layout>
   );
-}
+};
+
+export default Home;

@@ -1,9 +1,13 @@
 import React from "react";
+import Layout from "./../ui/main-layout";
 
-export default async function Page() {
+const Sleep: React.FC = () => {
   return (
-    <>
-      <p>sleep page</p>
-    </>
+    <Layout>
+      Sleep Page
+      {/* Your content here */}
+    </Layout>
   );
-}
+};
+
+export default Sleep;

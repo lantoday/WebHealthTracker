@@ -1,9 +1,13 @@
 import React from "react";
+import Layout from "./../ui/main-layout";
 
-export default async function Page() {
+const Profile: React.FC = () => {
   return (
-    <>
-      <p>exercise page</p>
-    </>
+    <Layout>
+      Profile Page
+      {/* Your content here */}
+    </Layout>
   );
-}
+};
+
+export default Profile;
