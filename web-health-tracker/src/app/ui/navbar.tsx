@@ -26,6 +26,12 @@ const Navbar: React.FC = () => {
               Sleep
             </a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/management">
+              <span data-feather="shopping-cart"></span>
+              Management
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
