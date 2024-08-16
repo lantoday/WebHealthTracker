@@ -63,7 +63,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="gender"
             className="form-select"
             id="gender"
-            defaultValue={profile?.gender}
+            defaultValue={profile?.gender || ""}
           >
             <option value="" disabled>
               Select your gender

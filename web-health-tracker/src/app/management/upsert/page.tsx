@@ -6,7 +6,7 @@ import ProfileForm from "@/app/ui/upsert-profile-form";
 import { getProfile } from "@/app/lib/dbactions/profile";
 import { Profile } from "@/app/lib/definitions";
 
-const ProfilePage: React.FC = () => {
+const UpsertProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +31,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <Layout>
-      <p className="h2">Management</p>
+      <p className="h2 d-flex justify-content-center">Management page</p>
       <hr />
       <div className="m-5 p-3">
         <p className="h4">{profile ? "Edit Profile" : "Add Profile"}</p>
@@ -43,4 +43,4 @@ const ProfilePage: React.FC = () => {
   );
 };
 
-export default ProfilePage;
+export default UpsertProfilePage;
