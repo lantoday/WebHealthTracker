@@ -4,8 +4,11 @@ import { Profile } from "@/app/lib/definitions";
 export const PROFILE_KEY = "profile";
 
 export async function saveProfile(profile: Profile): Promise<string> {
-  await doDatabaseTransaction("readwrite", ObjectStoreName.PROFILE, (store) =>
-    store.put(profile, PROFILE_KEY)
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.PROFILE,
+    (store: { put: (arg0: Profile, arg1: string) => any }) =>
+      store.put(profile, PROFILE_KEY)
   );
 
   console.log({ profile });
@@ -13,12 +16,14 @@ export async function saveProfile(profile: Profile): Promise<string> {
 }
 
 export async function getProfile(): Promise<Profile | null> {
+  console.log("getProfile");
   const profile = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.PROFILE,
-    (store) => store.get(PROFILE_KEY)
+    (store: { get: (arg0: string) => any }) => store.get(PROFILE_KEY)
   );
 
+  console.log({ profile });
   if (isProfile(profile)) {
     return profile;
   }

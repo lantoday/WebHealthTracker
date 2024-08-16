@@ -2,19 +2,18 @@
 
 import { addProfile } from "@/app/lib/actions/profile";
 import { useFormStatus, useFormState } from "react-dom";
+import { Profile } from "@/app/lib/definitions";
 
-export function ProfileForm() {
+interface UpsertProfileFormProps {
+  profile: Profile | null;
+}
+
+export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
   const initialState = {
     message: "",
   };
 
   const [state, formAction] = useFormState(addProfile, initialState);
-
-  /*
-  TODO:
-- need to save data into indexed DB
-- need to get data from indexed DB and prepopulate the form
-  */
 
   return (
     <form action={formAction} className="pt-4 pr-3">
@@ -31,6 +30,7 @@ export function ProfileForm() {
             name="firstName"
             className="form-control"
             id="firstName"
+            value={profile?.firstName}
           />
         </div>
       </div>
@@ -47,6 +47,7 @@ export function ProfileForm() {
             name="lastName"
             className="form-control"
             id="lastName"
+            value={profile?.lastName}
           />
         </div>
       </div>
@@ -62,7 +63,7 @@ export function ProfileForm() {
             name="gender"
             className="form-select"
             id="gender"
-            defaultValue="" // or initial value if needed
+            defaultValue={profile?.gender}
           >
             <option value="" disabled>
               Select your gender
@@ -81,7 +82,13 @@ export function ProfileForm() {
           </label>
         </div>
         <div className="col-6">
-          <input type="text" name="age" className="form-control" id="age" />
+          <input
+            type="text"
+            name="age"
+            className="form-control"
+            id="age"
+            value={profile?.age}
+          />
         </div>
       </div>
       {/* height */}
@@ -91,13 +98,15 @@ export function ProfileForm() {
             Height:
           </label>
         </div>
-        <div className="col-6">
+        <div className="col-6 d-flex">
           <input
             type="text"
             name="height"
             className="form-control"
             id="height"
+            value={profile?.height}
           />
+          <span className="m-2">CM</span>
         </div>
       </div>
       {/* weight */}
@@ -107,13 +116,15 @@ export function ProfileForm() {
             Weight:
           </label>
         </div>
-        <div className="col-6">
+        <div className="col-6 d-flex">
           <input
             type="text"
             name="weight"
             className="form-control"
             id="weight"
+            value={profile?.weight}
           />
+          <span className="m-2">KG</span>
         </div>
       </div>
 
@@ -126,4 +137,4 @@ export function ProfileForm() {
   );
 }
 
-export default ProfileForm;
+export default UpsertProfileForm;
