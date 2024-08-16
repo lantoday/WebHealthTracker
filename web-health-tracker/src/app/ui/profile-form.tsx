@@ -43,6 +43,14 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             <span className="col-2">Weight:</span>
             <span className="col-8">{`${profile?.weight + " KG" ?? ""}`}</span>
           </div>
+          <div className="d-flex flex-row-reverse m-4 p-2 h6">
+            <button
+              className="btn btn-outline-primary"
+              onClick={() => (window.location.href = "/management/upsert")}
+            >
+              Update profile
+            </button>
+          </div>
         </div>
       )}
 
@@ -53,10 +61,10 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             <hr />
 
             <button
-              className="btn btn-primary"
+              className="btn btn-outline-primary"
               onClick={() => (window.location.href = "/management/upsert")}
             >
-              Add Profile
+              Add profile
             </button>
           </div>
         </div>

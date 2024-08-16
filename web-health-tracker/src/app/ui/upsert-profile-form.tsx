@@ -129,7 +129,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       </div>
 
       <div className="col-8 p-3 d-flex justify-content-end">
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-primary">
           Submit
         </button>
       </div>

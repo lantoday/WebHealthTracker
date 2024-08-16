@@ -36,7 +36,7 @@ const UpsertProfilePage: React.FC = () => {
       <p className="h2 d-flex justify-content-center">Management page</p>
       <hr />
       <div className="m-5 p-3">
-        <p className="h4">{profile ? "Edit Profile" : "Add Profile"}</p>
+        <p className="h4">{profile ? "Edit profile" : "Add profile"}</p>
         <div className="border">
           <ProfileForm profile={profile} />
         </div>
