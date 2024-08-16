@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "./../ui/main-layout";
-// import ProfileForm from "./../ui/profile-form";
+import Layout from "../../ui/main-layout";
+import ProfileForm from "../../ui/upsert-form";
 
 const Profile: React.FC = () => {
   return (
@@ -9,8 +9,11 @@ const Profile: React.FC = () => {
       <hr />
 
       <div className="m-5 p-3">
+        {/* TODO need to update the title base on the action: add / update */}
         <p className="h4">User profile</p>
-        <div className="border">{/* <ProfileForm /> */}</div>
+        <div className="border">
+          <ProfileForm />
+        </div>
       </div>
     </Layout>
   );

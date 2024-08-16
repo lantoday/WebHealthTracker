@@ -1,6 +1,6 @@
 "use client";
 
-import { addProfile } from "@/app/lib/actions";
+import { addProfile } from "@/app/lib/actions/profile";
 import { useFormStatus, useFormState } from "react-dom";
 
 export function ProfileForm() {
@@ -9,6 +9,12 @@ export function ProfileForm() {
   };
 
   const [state, formAction] = useFormState(addProfile, initialState);
+
+  /*
+  TODO:
+- need to save data into indexed DB
+- need to get data from indexed DB and prepopulate the form
+  */
 
   return (
     <form action={formAction} className="pt-4 pr-3">
@@ -47,17 +53,24 @@ export function ProfileForm() {
       {/* gender */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="genderLabel" className="form-label h6">
+          <label htmlFor="gender" className="form-label h6">
             Gender:
           </label>
         </div>
         <div className="col-6">
-          <input
-            type="text"
+          <select
             name="gender"
-            className="form-control"
+            className="form-select"
             id="gender"
-          />
+            defaultValue="" // or initial value if needed
+          >
+            <option value="" disabled>
+              Select your gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="prefer_not_to_say">Prefer not to say</option>
+          </select>
         </div>
       </div>
       {/* age */}
@@ -106,7 +119,7 @@ export function ProfileForm() {
 
       <div className="col-8 p-3 d-flex justify-content-end">
         <button type="submit" className="btn btn-primary">
-          Add profile
+          Submit
         </button>
       </div>
     </form>

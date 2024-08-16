@@ -1,8 +1,10 @@
-"use server";
+// "use server";
 
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { Profile } from "@/app/lib/definitions";
+import { saveProfile } from "../dbactions/profile";
 
 const ProfileFormSchema = z.object({
   firstName: z.string({
@@ -29,22 +31,6 @@ const ProfileFormSchema = z.object({
     .max(300, { message: "Weight must be no more than 300." }),
 });
 
-// Infer the TypeScript type from the schema
-// export type Profile = z.infer<typeof ProfileFormSchema>;
-
-// Define the state type for managing form state
-// export type Profile = {
-//   errors?: {
-//     firstName?: string[];
-//     lastName?: string[];
-//     gender?: string[];
-//     age?: string[];
-//     height?: string[];
-//     weight?: string[];
-//   }; // Holds validation errors for each field
-//   message?: string | null; // Optional message for additional status
-// };
-
 export async function addProfile(prevState: any, formData: FormData) {
   const validatedFields = ProfileFormSchema.safeParse({
     firstName: formData.get("firstName"),
@@ -55,6 +41,7 @@ export async function addProfile(prevState: any, formData: FormData) {
     weight: formData.get("weight"),
   });
 
+  //TODO need to make sure the error message is shown in the UI
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
@@ -67,10 +54,21 @@ export async function addProfile(prevState: any, formData: FormData) {
   const { firstName, lastName, gender, age, height, weight } =
     validatedFields.data;
 
+  const profile: Profile = {
+    firstName,
+    lastName,
+    gender,
+    age,
+    height,
+    weight,
+  };
   // insert data into indexedDB
   console.log("inserting data into indexedDB");
-  console.log({ firstName, lastName, gender, age, height, weight });
 
-  revalidatePath("/management");
+  //TODO need to add an alert to show the message
+  var message = saveProfile(profile);
+
+  //TODO revalidatePath() need to have "use server"; at the top, but it results in an error in indexeddb.open()
+  // revalidatePath("/management");
   redirect("/management");
 }
