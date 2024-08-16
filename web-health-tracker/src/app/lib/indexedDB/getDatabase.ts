@@ -36,16 +36,3 @@ export function getDatabase(): Promise<IDBDatabase> {
     request.addEventListener("blocked", reject);
   });
 }
-
-// function clearObjectStore() {
-//   var store = getObjectStore(DB_STORE_NAME, "readwrite");
-//   var req = store.clear();
-//   req.onsuccess = function (evt) {
-//     displayActionSuccess("Store cleared");
-//     displayPubList(store);
-//   };
-//   req.onerror = function (evt) {
-//     console.error("clearObjectStore:", evt.target.errorCode);
-//     displayActionFailure(this.error);
-//   };
-// }

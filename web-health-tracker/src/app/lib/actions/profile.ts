@@ -62,8 +62,6 @@ export async function addProfile(prevState: any, formData: FormData) {
     height,
     weight,
   };
-  // insert data into indexedDB
-  console.log("inserting data into indexedDB");
 
   //TODO need to add an alert to show the message
   var message = saveProfile(profile);

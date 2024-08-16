@@ -1,8 +1,11 @@
 import React from "react";
-import Layout from "../../ui/main-layout";
-import ProfileForm from "../../ui/upsert-form";
+import Layout from "@/app//ui/main-layout";
+import ProfileForm from "@/app/ui/upsert-profile-form";
+import { getProfile } from "@/app/lib/dbactions/profile";
 
-const Profile: React.FC = () => {
+const Profile: React.FC = async () => {
+  const profile = await Promise.all([getProfile()]);
+
   return (
     <Layout>
       <p className="h2">Management</p>
