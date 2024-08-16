@@ -5,6 +5,8 @@ import Layout from "@/app/ui/main-layout";
 import ProfileForm from "@/app/ui/upsert-profile-form";
 import { getProfile } from "@/app/lib/dbactions/profile";
 import { Profile } from "@/app/lib/definitions";
+import Loading from "@/app/ui/loading";
+import ErrorPage from "@/app/ui/error";
 
 const UpsertProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -26,8 +28,8 @@ const UpsertProfilePage: React.FC = () => {
     fetchProfile();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <Loading />;
+  if (error) return <ErrorPage error={error} />;
 
   return (
     <Layout>
