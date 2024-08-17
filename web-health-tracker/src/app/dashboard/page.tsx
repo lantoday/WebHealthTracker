@@ -5,7 +5,7 @@ import WorkoutCalendar from "../ui/dashboard/workout-calendar";
 const Sleep: React.FC = () => {
   return (
     <Layout>
-      <p className="h2 d-flex justify-content-center">Dashboard page</p>
+      <p className="h2 d-flex justify-content-center mt-4">Dashboard page</p>
       <hr />
       <WorkoutCalendar />
     </Layout>
