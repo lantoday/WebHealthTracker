@@ -1,10 +1,10 @@
 "use client";
 
 import { z } from "zod";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Profile } from "@/app/lib/definitions";
-import { saveProfile } from "../dbactions/profile";
+import { saveProfileToDb } from "../dbactions/profile";
 
 const ProfileFormSchema = z.object({
   firstName: z.string({
@@ -64,7 +64,7 @@ export async function addProfile(prevState: any, formData: FormData) {
   };
 
   //TODO need to add an alert to show the message
-  var message = saveProfile(profile);
+  var message = saveProfileToDb(profile);
 
   //TODO revalidatePath() need to have "use server"; at the top, but it results in an error in indexeddb.open()
   // revalidatePath("/management");

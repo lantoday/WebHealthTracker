@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../ui/shared/main-layout";
 import WorkoutCalendar from "../ui/dashboard/workout-calendar";
 
-const Sleep: React.FC = () => {
+const DashboardPage: React.FC = () => {
   return (
     <Layout>
       <p className="h2 d-flex justify-content-center mt-4">Dashboard page</p>
@@ -12,4 +12,4 @@ const Sleep: React.FC = () => {
   );
 };
 
-export default Sleep;
+export default DashboardPage;

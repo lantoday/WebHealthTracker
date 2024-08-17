@@ -1,7 +1,7 @@
 "use client";
 
 import { addProfile } from "@/app/lib/actions/profile";
-import { useFormStatus, useFormState } from "react-dom";
+import { useFormState } from "react-dom";
 import { Profile } from "@/app/lib/definitions";
 import { useState } from "react";
 

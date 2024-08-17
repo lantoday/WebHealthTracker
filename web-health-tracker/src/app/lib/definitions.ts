@@ -6,3 +6,8 @@ export type Profile = {
   height: number;
   weight: number;
 };
+
+export type Steps = {
+  date: string;
+  steps: number;
+};
