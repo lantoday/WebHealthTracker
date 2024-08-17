@@ -1,14 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
 import Tooltip from "@/app/ui/shared/tooltip"; // Adjust import path as necessary
+import { getSteps } from "@/app/lib/dbactions/steps"; // Adjust import path as necessary
 
 export function StepsComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const hasStepsData = false;
+  const [stepsData, setStepsData] = useState<Steps[] | null>(null);
   const tooltipText = `Step count is the number of steps you take throughout the day.
 Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves step-like movement, including walking, running, stair-climbing, cross-country skiing, and even movement as you go about your daily chores.`;
+
+  useEffect(() => {
+    async function fetchSteps() {
+      const data = await getSteps();
+      setStepsData(data);
+    }
+
+    fetchSteps();
+  }, []);
+
+  const hasStepsData = stepsData && stepsData.length > 0;
 
   return (
     <>
@@ -30,7 +42,17 @@ Pedometers and digital activity trackers can help you determine your step count.
           </div>
         </Tooltip>
       </div>
-      {hasStepsData && <div>show charts</div>}
+      {hasStepsData && (
+        <div>
+          <ul>
+            {stepsData!.map((step, index) => (
+              <li key={index}>
+                Date: {step.date}, Steps: {step.steps}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {!hasStepsData && (
         <div className="d-flex justify-content-center border">

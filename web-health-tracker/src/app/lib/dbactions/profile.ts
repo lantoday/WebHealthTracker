@@ -7,7 +7,7 @@ export async function saveProfileToDb(profile: Profile): Promise<string> {
     "readwrite",
     ObjectStoreName.PROFILE,
     (store: { put: (arg0: Profile, arg1: string) => any }) =>
-      store.put(profile, ProfileKeyName.STEPS)
+      store.put(profile, ProfileKeyName.PROFILE)
   );
 
   console.log({ profile });
@@ -19,7 +19,7 @@ export async function getProfile(): Promise<Profile | null> {
   const profile = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.PROFILE,
-    (store: { get: (arg0: string) => any }) => store.get(ProfileKeyName.STEPS)
+    (store: { get: (arg0: string) => any }) => store.get(ProfileKeyName.PROFILE)
   );
 
   console.log({ profile });
