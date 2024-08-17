@@ -13,35 +13,45 @@ export function ProfileForm({ profile }: ProfileFormProps) {
         <div className="pt-4 pr-3">
           {/* first name */}
           <div className="row align-items-center m-4 p-2 h6">
-            <span className="col-2">First Name:</span>
-            <span className="col-8">{profile?.firstName ?? ""}</span>
+            <span className="col-2">First name:</span>
+            <span className="col-6  border p-2 m-1">
+              {profile?.firstName ?? ""}
+            </span>
           </div>
           {/* last name */}
           <div className="row align-items-center m-4 p-2 h6">
-            <span className="col-2">Last Name:</span>
-            <span className="col-8">{profile?.lastName ?? ""}</span>
+            <span className="col-2">Last name:</span>
+            <span className="col-6  border p-2 m-1">
+              {profile?.lastName ?? ""}
+            </span>
           </div>
 
           {/* gender */}
           <div className="row align-items-center m-4 p-2 h6">
             <span className="col-2">Gender:</span>
-            <span className="col-8">{profile?.gender ?? ""}</span>
+            <span className="col-6  border p-2 m-1">
+              {profile?.gender ?? ""}
+            </span>
           </div>
 
           {/* age */}
           <div className="row align-items-center m-4 p-2 h6">
             <span className="col-2">Age:</span>
-            <span className="col-8">{profile?.age ?? ""}</span>
+            <span className="col-6  border p-2 m-1">{profile?.age ?? ""}</span>
           </div>
           {/* height */}
           <div className="row align-items-center m-4 p-2 h6">
             <span className="col-2">Height:</span>
-            <span className="col-8">{`${profile?.height + " CM" ?? ""}`}</span>
+            <span className="col-6 border p-2 m-1">{`${
+              profile?.height + " CM" ?? ""
+            }`}</span>
           </div>
           {/* weight */}
           <div className="row align-items-center m-4 p-2  h6">
             <span className="col-2">Weight:</span>
-            <span className="col-8">{`${profile?.weight + " KG" ?? ""}`}</span>
+            <span className="col-6 border p-2 m-1">{`${
+              profile?.weight + " KG" ?? ""
+            }`}</span>
           </div>
           <div className="d-flex flex-row-reverse m-4 p-2 h6">
             <button
