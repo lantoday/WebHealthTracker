@@ -141,7 +141,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
         </div>
       </div>
 
-      <div className="col-8 p-3 d-flex justify-content-end">
+      <div className="d-flex flex-row-reverse m-4 p-2 h6">
         <button type="submit" className="btn btn-outline-primary">
           Submit
         </button>
