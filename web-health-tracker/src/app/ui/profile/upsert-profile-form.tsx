@@ -3,6 +3,7 @@
 import { addProfile } from "@/app/lib/actions/profile";
 import { useFormStatus, useFormState } from "react-dom";
 import { Profile } from "@/app/lib/definitions";
+import { useState } from "react";
 
 interface UpsertProfileFormProps {
   profile: Profile | null;
@@ -14,6 +15,12 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
   };
 
   const [state, formAction] = useFormState(addProfile, initialState);
+  const [firstName, setFirstName] = useState(profile?.firstName || "");
+  const [lastName, setLastName] = useState(profile?.lastName || "");
+  const [gender, setGender] = useState(profile?.gender || "");
+  const [age, setAge] = useState(profile?.age || "");
+  const [height, setHeight] = useState(profile?.height || "");
+  const [weight, setWeight] = useState(profile?.weight || "");
 
   return (
     <form action={formAction} className="pt-4 pr-3">
@@ -30,7 +37,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="firstName"
             className="form-control"
             id="firstName"
-            value={profile?.firstName}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
       </div>
@@ -47,7 +55,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="lastName"
             className="form-control"
             id="lastName"
-            value={profile?.lastName}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
       </div>
@@ -63,7 +72,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="gender"
             className="form-select"
             id="gender"
-            defaultValue={profile?.gender || ""}
+            defaultValue={gender}
+            onChange={(e) => setGender(e.target.value)}
           >
             <option value="" disabled>
               Select your gender
@@ -87,7 +97,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="age"
             className="form-control"
             id="age"
-            value={profile?.age}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
         </div>
       </div>
@@ -104,7 +115,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="height"
             className="form-control"
             id="height"
-            value={profile?.height}
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
           />
           <span className="m-2">CM</span>
         </div>
@@ -122,7 +134,8 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
             name="weight"
             className="form-control"
             id="weight"
-            value={profile?.weight}
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
           />
           <span className="m-2">KG</span>
         </div>

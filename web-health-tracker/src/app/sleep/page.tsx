@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./../ui/main-layout";
+import Layout from "../ui/shared/main-layout";
 
 const Sleep: React.FC = () => {
   return (

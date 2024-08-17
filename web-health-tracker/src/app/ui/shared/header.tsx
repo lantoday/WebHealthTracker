@@ -17,7 +17,7 @@ const Header: React.FC = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <input
+      {/* <input
         className="form-control form-control-dark w-100"
         type="text"
         placeholder="Search"
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
             Sign out
           </a>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };

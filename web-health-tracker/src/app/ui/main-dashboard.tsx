@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import feather from "feather-icons";
-import Layout from "./../ui/main-layout";
+import Layout from "./shared/main-layout";
 
 const MainDashboard: React.FC = () => {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
