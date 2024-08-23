@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { saveSteps } from "@/app/lib/actions/steps";
+import { addSteps } from "@/app/lib/actions/steps";
 import { z } from "zod";
 
 const StepsFormSchema = z.object({
@@ -41,7 +41,7 @@ export function AddStepsModal({ onClose }: { onClose: () => void }) {
 
     // Call the save function
     try {
-      const response = await saveSteps(formData);
+      const response = await addSteps(formData);
       // Handle successful save
       alert(response.message);
       onClose(); // Close the modal

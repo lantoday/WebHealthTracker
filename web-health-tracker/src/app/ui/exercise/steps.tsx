@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
 import Tooltip from "@/app/ui/shared/tooltip"; // Adjust import path as necessary
 import { getSteps } from "@/app/lib/dbactions/steps"; // Adjust import path as necessary
+import { Steps } from "@/app/lib/definitions";
 
 export function StepsComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +21,7 @@ Pedometers and digital activity trackers can help you determine your step count.
     fetchSteps();
   }, []);
 
-  const hasStepsData = stepsData && stepsData.length > 0;
+  const hasStepsData = Array.isArray(stepsData) && stepsData.length > 0;
 
   return (
     <>

@@ -10,7 +10,7 @@ const StepsFormSchema = z.object({
   steps: z.number(),
 });
 
-export async function saveSteps(formData: any) {
+export async function addSteps(formData: any) {
   // Validate the form data
   const validatedFields = StepsFormSchema.safeParse(formData);
 

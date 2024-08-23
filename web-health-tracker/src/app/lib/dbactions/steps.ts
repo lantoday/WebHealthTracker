@@ -13,7 +13,7 @@ export async function saveStepsToDb(steps: Steps): Promise<string> {
   if (existingSteps) {
     // Filter out any steps with the same date as the new step
     const filteredSteps = existingSteps.filter(
-      (step) => step.date !== steps.date
+      (step: Steps) => step.date !== steps.date
     );
 
     // Add the new step to the filtered list
@@ -34,16 +34,16 @@ export async function saveStepsToDb(steps: Steps): Promise<string> {
   return "Steps saved successfully!";
 }
 
-export async function getSteps(): Promise<Steps | null> {
+export async function getSteps(): Promise<Steps[] | null> {
   console.log("get steps");
   const steps = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.EXERCISE,
-    (store: { get: (arg0: string) => any }) => store.get(ProfileKeyName.STEPS)
+    (store) => store.get(ProfileKeyName.STEPS)
   );
 
   console.log({ steps });
-  if (steps && steps.length > 0) {
+  if (steps instanceof Array) {
     return steps;
   }
   return null;
