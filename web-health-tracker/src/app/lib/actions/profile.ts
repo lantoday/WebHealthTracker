@@ -46,7 +46,7 @@ export async function addProfile(prevState: any, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
+      message: "Validation failed. Please check the form data.",
     };
   }
 
