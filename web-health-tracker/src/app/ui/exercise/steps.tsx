@@ -14,12 +14,13 @@ Pedometers and digital activity trackers can help you determine your step count.
 
   useEffect(() => {
     async function fetchSteps() {
-      const data = await getSteps();
-      setStepsData(data);
+      if (!isModalOpen) {
+        const data = await getSteps();
+        setStepsData(data);
+      }
     }
-
     fetchSteps();
-  }, []);
+  }, [isModalOpen]);
 
   const hasStepsData = Array.isArray(stepsData) && stepsData.length > 0;
 
