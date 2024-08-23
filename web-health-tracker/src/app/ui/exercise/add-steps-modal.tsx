@@ -55,8 +55,8 @@ export function AddStepsModal({ onClose }: { onClose: () => void }) {
     <div className="modal show d-block" tabIndex={-1} role="dialog">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
-          <div className="modal-header bg-primary-subtle">
-            <h5 className="modal-title">Add steps</h5>
+          <div className="modal-header bg-black opacity-75">
+            <h5 className="modal-title text-light">Add steps</h5>
             <button
               type="button"
               className="btn-close"
@@ -87,6 +87,7 @@ export function AddStepsModal({ onClose }: { onClose: () => void }) {
                   type="number"
                   className="form-control"
                   id="steps"
+                  min="1"
                   value={formData.steps}
                   onChange={handleChange}
                   required

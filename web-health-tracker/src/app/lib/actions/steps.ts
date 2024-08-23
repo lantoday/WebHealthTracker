@@ -2,6 +2,8 @@
 
 import { z } from "zod";
 import { saveStepsToDb } from "@/app/lib/dbactions/steps";
+import { Steps } from "@/app/lib/definitions";
+// import { redirect } from "next/navigation";
 
 const StepsFormSchema = z.object({
   date: z.string(),
@@ -22,11 +24,12 @@ export async function saveSteps(formData: any) {
 
   // Prepare data for insertion into the database
   const { date, steps } = validatedFields.data;
-  const stepsData = { date, steps };
+  const stepsData: Steps = { date, steps };
 
   // Save to database and handle the result
   try {
     const message = await saveStepsToDb(stepsData);
+    // redirect("/exercise"); //cause save error don't know why yet
     return { errors: {}, message };
   } catch (error) {
     // Handle database errors

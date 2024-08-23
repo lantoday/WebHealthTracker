@@ -15,7 +15,7 @@ const Tooltip: React.FC<{ text: string; children: React.ReactNode }> = ({
       onMouseLeave={() => setIsVisible(false)}
     >
       {children}
-      {isVisible && <div className="tooltip-text">{text}</div>}
+      {isVisible && <div className="tooltip-text opacity-75">{text}</div>}
     </div>
   );
 };
