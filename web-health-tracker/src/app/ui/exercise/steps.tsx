@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
-import Tooltip from "@/app/ui/shared/tooltip"; // Adjust import path as necessary
-import { getSteps } from "@/app/lib/dbactions/steps"; // Adjust import path as necessary
+import StepsDefaultChartComponent from "@/app/ui/exercise/steps-default-chart";
+import Tooltip from "@/app/ui/shared/tooltip";
+import { getSteps } from "@/app/lib/dbactions/steps";
 import { Steps } from "@/app/lib/definitions";
 
 export function StepsComponent() {
@@ -26,26 +27,42 @@ Pedometers and digital activity trackers can help you determine your step count.
 
   return (
     <>
-      <div className="d-flex">
-        <p className="h5">Steps</p>
-        <Tooltip text={tooltipText}>
-          <div className="p-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="--bs-primary-border-subtle"
-              className="bi bi-info-square"
-              viewBox="0 0 16 16"
-            >
-              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-            </svg>
-          </div>
-        </Tooltip>
-      </div>
-      {hasStepsData && (
+      <div className="d-flex justify-content-between p-2 mb-2">
+        <div className="d-flex">
+          <p className="h5">Steps</p>
+          <Tooltip text={tooltipText}>
+            <div className="p-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="--bs-primary-border-subtle"
+                className="bi bi-info-square"
+                viewBox="0 0 16 16"
+              >
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+              </svg>
+            </div>
+          </Tooltip>
+        </div>
         <div>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-primary"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Add steps
+          </button>
+          {isModalOpen && (
+            <AddStepsModal onClose={() => setIsModalOpen(false)} />
+          )}
+        </div>
+      </div>
+
+      {hasStepsData && (
+        <div className="border">
+          <StepsDefaultChartComponent />
           <ul>
             {stepsData!.map((step, index) => (
               <li key={index}>
