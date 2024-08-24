@@ -7,7 +7,9 @@ export type Profile = {
   weight: number;
 };
 
-export type Steps = {
+export type StepEntry = {
   date: string;
   steps: number;
 };
+
+export type StepArray = StepEntry[];

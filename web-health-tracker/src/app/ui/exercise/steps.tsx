@@ -5,25 +5,25 @@ import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
 import StepsDefaultChartComponent from "@/app/ui/exercise/steps-default-chart";
 import Tooltip from "@/app/ui/shared/tooltip";
 import { getSteps } from "@/app/lib/dbactions/steps";
-import { Steps } from "@/app/lib/definitions";
+import { StepArray } from "@/app/lib/definitions";
 
 export function StepsComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [stepsData, setStepsData] = useState<Steps[] | null>(null);
+  const [rawData, setRawData] = useState<StepArray | null>(null);
   const tooltipText = `Step count is the number of steps you take throughout the day.
 Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves step-like movement, including walking, running, stair-climbing, cross-country skiing, and even movement as you go about your daily chores.`;
 
   useEffect(() => {
-    async function fetchSteps() {
+    async function mapStepsDataForCharts() {
       if (!isModalOpen) {
-        const data = await getSteps();
-        setStepsData(data);
+        const rawData = await getSteps();
+        setRawData(rawData);
       }
     }
-    fetchSteps();
+    mapStepsDataForCharts();
   }, [isModalOpen]);
 
-  const hasStepsData = Array.isArray(stepsData) && stepsData.length > 0;
+  const hasStepsData = Array.isArray(rawData) && rawData.length > 0;
 
   return (
     <>
@@ -62,14 +62,7 @@ Pedometers and digital activity trackers can help you determine your step count.
 
       {hasStepsData && (
         <div className="border">
-          <StepsDefaultChartComponent />
-          <ul>
-            {stepsData!.map((step, index) => (
-              <li key={index}>
-                Date: {step.date}, Steps: {step.steps}
-              </li>
-            ))}
-          </ul>
+          <StepsDefaultChartComponent rawData={rawData} />
         </div>
       )}
 

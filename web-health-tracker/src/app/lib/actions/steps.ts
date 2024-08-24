@@ -1,8 +1,8 @@
 "use client";
 
 import { z } from "zod";
-import { saveStepsToDb } from "@/app/lib/dbactions/steps";
-import { Steps } from "@/app/lib/definitions";
+import { saveStepsToDb, getSteps } from "@/app/lib/dbactions/steps";
+import { StepEntry } from "@/app/lib/definitions";
 // import { redirect } from "next/navigation";
 
 const StepsFormSchema = z.object({
@@ -24,7 +24,7 @@ export async function addSteps(formData: any) {
 
   // Prepare data for insertion into the database
   const { date, steps } = validatedFields.data;
-  const stepsData: Steps = { date, steps };
+  const stepsData: StepEntry = { date, steps };
 
   // Save to database and handle the result
   try {
