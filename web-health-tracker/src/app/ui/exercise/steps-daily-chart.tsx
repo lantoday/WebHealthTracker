@@ -43,7 +43,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
               label: "Step counts (last 30 days)",
               data: sortedData.map((entry) => entry.steps),
               fill: false,
-              borderColor: "rgb(75, 192, 192)",
+              borderColor: "#0d6efd",
               borderWidth: 1,
               pointRadius: 2,
             },
