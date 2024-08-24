@@ -8,9 +8,7 @@ interface StepsDefaultChartProps {
   rawData: StepArray | null;
 }
 
-export function StepsDefaultChartComponent({
-  rawData,
-}: StepsDefaultChartProps) {
+export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
 
   // Define the start date for the last 30 days
@@ -68,4 +66,4 @@ export function StepsDefaultChartComponent({
   );
 }
 
-export default StepsDefaultChartComponent;
+export default StepsDailyChartComponent;

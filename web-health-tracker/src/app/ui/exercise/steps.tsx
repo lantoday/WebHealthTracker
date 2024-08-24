@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
-import StepsDefaultChartComponent from "@/app/ui/exercise/steps-default-chart";
+import StepsDailyChartComponent from "@/app/ui/exercise/steps-daily-chart";
 import Tooltip from "@/app/ui/shared/tooltip";
 import { getSteps } from "@/app/lib/dbactions/steps";
 import { StepArray } from "@/app/lib/definitions";
@@ -62,7 +62,7 @@ Pedometers and digital activity trackers can help you determine your step count.
 
       {hasStepsData && (
         <div className="border">
-          <StepsDefaultChartComponent rawData={rawData} />
+          <StepsDailyChartComponent rawData={rawData} />
         </div>
       )}
 
