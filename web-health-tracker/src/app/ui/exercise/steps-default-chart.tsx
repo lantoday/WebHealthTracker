@@ -28,10 +28,13 @@ export function StepsDefaultChartComponent({
     Tooltip
   );
 
-  const labels = rawData ? rawData.map((entry) => entry.date) : [];
+  const sortedData = rawData
+    ? rawData
+        .slice()
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    : [];
+  const labels = sortedData.map((entry) => entry.date);
   const data = rawData ? rawData.map((entry) => entry.steps) : [];
-  console.log(labels);
-  console.log(data);
 
   const stepsData = {
     labels: labels,
