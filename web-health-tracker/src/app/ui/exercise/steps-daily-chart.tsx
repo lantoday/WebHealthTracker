@@ -11,7 +11,9 @@ interface StepsDefaultChartProps {
 export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
   const [chartType, setChartType] = useState("line");
-  const [chartColor, setChartColor] = useState("#0d6efd"); // Default color
+  const [chartColor, setChartColor] = useState(
+    localStorage.getItem("customColor") ?? "#0d6efd"
+  ); // Default color
 
   // Define the start date for the last 30 days
   const startDate = new Date();
@@ -23,6 +25,12 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .filter((entry) => new Date(entry.date) >= startDate)
     : [];
+
+  const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value;
+    setChartColor(newColor);
+    localStorage.setItem("customColor", newColor);
+  };
 
   useEffect(() => {
     // Destroy the previous chart instance if it exists
@@ -96,7 +104,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
             id="chartColor"
             name="chartColor"
             value={chartColor}
-            onChange={(e) => setChartColor(e.target.value)}
+            onChange={handleColorChange}
             className="form-control form-control-color form-control-sm"
           />
         </div>
