@@ -11,6 +11,7 @@ interface StepsDefaultChartProps {
 export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
   const [chartType, setChartType] = useState("line");
+  const [chartColor, setChartColor] = useState("#0d6efd"); // Default color
 
   // Define the start date for the last 30 days
   const startDate = new Date();
@@ -44,8 +45,8 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
               label: "Daily step counts (last 30 days)",
               data: sortedData.map((entry) => entry.steps),
               fill: false,
-              borderColor: "#0d6efd",
-              backgroundColor: "#0d6efd",
+              borderColor: chartColor,
+              backgroundColor: chartColor,
               borderWidth: 1,
               pointRadius: 2,
             },
@@ -53,37 +54,51 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         },
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartType, rawData]);
+  }, [chartType, chartColor, rawData]);
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <div className="form-check m-2">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="chartType"
-            id="radioLineChart"
-            checked={chartType === "line"}
-            onChange={() => setChartType("line")}
-          />
-          <label className="form-check-label" htmlFor="radioLineChart">
-            Line chart
-          </label>
+      <div className="d-flex mb-3 justify-content-between">
+        <div className="d-flex mb-3 justify-content-center flex-grow-1">
+          <div className="form-check m-2">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="chartType"
+              id="radioLineChart"
+              checked={chartType === "line"}
+              onChange={() => setChartType("line")}
+            />
+            <label className="form-check-label" htmlFor="radioLineChart">
+              Line chart
+            </label>
+          </div>
+          <div className="form-check m-2">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="chartType"
+              id="radioBarChart"
+              checked={chartType === "bar"}
+              onChange={() => setChartType("bar")}
+            />
+            <label className="form-check-label" htmlFor="radioBarChart">
+              Bar chart
+            </label>
+          </div>
         </div>
-        <div className="form-check m-2">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="chartType"
-            id="radioBarChart"
-            checked={chartType === "bar"}
-            onChange={() => setChartType("bar")}
-          />
-          <label className="form-check-label" htmlFor="radioBarChart">
-            Bar chart
+        <div className="form-check m-2 d-flex justify-content-end">
+          <label htmlFor="chartColor" className="form-check-label me-2">
+            Select color:
           </label>
+          <input
+            type="color"
+            id="chartColor"
+            name="chartColor"
+            value={chartColor}
+            onChange={(e) => setChartColor(e.target.value)}
+            className="form-control form-control-color form-control-sm"
+          />
         </div>
       </div>
       <canvas
