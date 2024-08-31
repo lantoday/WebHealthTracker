@@ -43,7 +43,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "dailyChart"
+      "stepsDailyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
@@ -114,7 +114,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
       </div>
       <canvas
         className="w-100"
-        id="dailyChart"
+        id="stepsDailyChart"
         width="900"
         height="380"
       ></canvas>

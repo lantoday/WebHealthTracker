@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import AddStepsModal from "@/app/ui/workouts/steps/add-steps-modal";
-import StepsDailyChartComponent from "@/app/ui/workouts/steps/steps-daily-chart";
-import StepsWeeklyChartComponent from "@/app/ui/workouts/steps/steps-weekly-chart";
-import StepsMonthlyChartComponent from "@/app/ui/workouts/steps/steps-monthly-chart";
+import DailyChart from "@/app/ui/workouts/steps/daily-chart";
+import WeeklyChart from "@/app/ui/workouts/steps/weekly-chart";
+import MonthlyChart from "@/app/ui/workouts/steps/monthly-chart";
 import { getSteps } from "@/app/lib/dbactions/steps";
 import { StepArray, DisplayMode } from "@/app/lib/utils/definitions";
 
@@ -16,13 +16,13 @@ export function StepsComponent() {
   );
 
   useEffect(() => {
-    async function mapStepsDataForCharts() {
+    async function getRawData() {
       if (!isModalOpen) {
         const rawData = await getSteps();
         setRawData(rawData);
       }
     }
-    mapStepsDataForCharts();
+    getRawData();
   }, [isModalOpen]);
 
   const hasStepsData = Array.isArray(rawData) && rawData.length > 0;
@@ -30,13 +30,13 @@ export function StepsComponent() {
   const renderChart = () => {
     switch (displayMode) {
       case DisplayMode.Daily:
-        return <StepsDailyChartComponent rawData={rawData} />;
+        return <DailyChart rawData={rawData} />;
       case DisplayMode.Weekly:
-        return <StepsWeeklyChartComponent rawData={rawData} />;
+        return <WeeklyChart rawData={rawData} />;
       case DisplayMode.Monthly:
-        return <StepsMonthlyChartComponent rawData={rawData} />;
+        return <MonthlyChart rawData={rawData} />;
       default:
-        return <StepsDailyChartComponent rawData={rawData} />;
+        return <DailyChart rawData={rawData} />;
     }
   };
 

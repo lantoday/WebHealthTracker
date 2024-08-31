@@ -9,7 +9,9 @@ interface StepsDefaultChartProps {
   rawData: StepArray | null;
 }
 
-export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
+export function StepsMonthlyChartComponent({
+  rawData,
+}: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
   const [sortedData, setSortedData] = useState<StepArray | []>(rawData ?? []);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
@@ -28,21 +30,20 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
   }, [rawData]);
 
   useEffect(() => {
-    // Aggregate daily data into weekly data
-    const weeklyData = sortedData.reduce((acc, entry) => {
+    // Aggregate daily data into monthly data
+    const monthlyData = sortedData.reduce((acc, entry) => {
       const date = new Date(entry.date);
-      const weekStart = new Date(date.setDate(date.getDate() - date.getDay()));
-      const weekStartStr = weekStart.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+      const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`; // Format as YYYY-M
 
-      if (!acc[weekStartStr]) {
-        acc[weekStartStr] = 0;
+      if (!acc[monthYear]) {
+        acc[monthYear] = 0;
       }
-      acc[weekStartStr] += entry.steps;
+      acc[monthYear] += entry.steps;
       return acc;
     }, {} as Record<string, number>);
 
-    const labels = Object.keys(weeklyData).sort(); // Sort weeks
-    const data = labels.map((week) => weeklyData[week]);
+    const labels = Object.keys(monthlyData).sort(); // Sort months
+    const data = labels.map((month) => monthlyData[month]);
 
     // Destroy the previous chart instance if it exists
     if (chartRef.current) {
@@ -51,7 +52,7 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "weeklyChart"
+      "stepMonthlyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
@@ -61,7 +62,7 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
           labels,
           datasets: [
             {
-              label: "Weekly steps count (last 52 weeks)",
+              label: "Monthly steps count (last 12 months)",
               data,
               fill: false,
               borderColor: chartColor,
@@ -109,7 +110,7 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
       </div>
       <canvas
         className="w-100"
-        id="weeklyChart"
+        id="stepMonthlyChart"
         width="900"
         height="380"
       ></canvas>
@@ -117,4 +118,4 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
   );
 }
 
-export default StepsWeeklyChartComponent;
+export default StepsMonthlyChartComponent;
