@@ -13,3 +13,8 @@ export type StepEntry = {
 };
 
 export type StepArray = StepEntry[];
+
+export enum ChartType {
+  Line = "line",
+  Bar = "bar",
+}

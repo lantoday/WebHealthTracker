@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray } from "@/app/lib/definitions";
+import { StepArray, ChartType } from "@/app/lib/definitions";
 
 interface StepsDefaultChartProps {
   rawData: StepArray | null;
@@ -10,7 +10,7 @@ interface StepsDefaultChartProps {
 
 export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [chartType, setChartType] = useState<"line" | "bar">("line");
+  const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
   const [chartColor, setChartColor] = useState(
     localStorage.getItem("customColor") ?? "#0d6efd"
   ); // Default color
@@ -42,7 +42,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "dailyLineChart"
+      "dailyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
@@ -76,8 +76,8 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
               type="radio"
               name="chartType"
               id="radioLineChart"
-              checked={chartType === "line"}
-              onChange={() => setChartType("line")}
+              checked={chartType === ChartType.Line}
+              onChange={() => setChartType(ChartType.Line)}
             />
             <label className="form-check-label" htmlFor="radioLineChart">
               Line chart
@@ -89,8 +89,8 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
               type="radio"
               name="chartType"
               id="radioBarChart"
-              checked={chartType === "bar"}
-              onChange={() => setChartType("bar")}
+              checked={chartType === ChartType.Bar}
+              onChange={() => setChartType(ChartType.Bar)}
             />
             <label className="form-check-label" htmlFor="radioBarChart">
               Bar chart
@@ -113,7 +113,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
       </div>
       <canvas
         className="w-100"
-        id="dailyLineChart"
+        id="dailyChart"
         width="900"
         height="380"
       ></canvas>
