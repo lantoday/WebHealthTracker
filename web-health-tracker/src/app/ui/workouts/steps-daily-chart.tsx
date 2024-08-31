@@ -10,14 +10,10 @@ interface StepsDefaultChartProps {
 
 export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [chartType, setChartType] = useState("line");
+  const [chartType, setChartType] = useState<"line" | "bar">("line");
   const [chartColor, setChartColor] = useState(
     localStorage.getItem("customColor") ?? "#0d6efd"
   ); // Default color
-
-  // Define the start date for the last 30 days
-  const startDate = new Date();
-  startDate.setDate(new Date().getDate() - 30);
 
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value;
@@ -26,6 +22,10 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   };
 
   useEffect(() => {
+    // Define the start date for the last 30 days
+    const startDate = new Date();
+    startDate.setDate(new Date().getDate() - 30);
+
     const sortedData = rawData
       ? rawData
           .slice()
@@ -64,12 +64,12 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         },
       });
     }
-  }, [chartType, chartColor, rawData, startDate]);
+  }, [chartType, chartColor, rawData]);
 
   return (
     <>
-      <div className="d-flex mb-3 justify-content-between">
-        <div className="d-flex mb-3 justify-content-center flex-grow-1">
+      <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-center flex-grow-1">
           <div className="form-check m-2">
             <input
               className="form-check-input"
