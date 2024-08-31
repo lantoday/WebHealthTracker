@@ -28,18 +28,42 @@ const ProfilePage: React.FC = () => {
     fetchProfile();
   }, []);
 
-  if (loading) return <Loading />;
-  if (error) return <ErrorPage error={error} />;
-
   return (
     <Layout>
-      {/* <p className="h2 d-flex justify-content-center mt-4">Management page</p> */}
-      {/* <hr /> */}
-      <div className="m-5 p-3">
-        <p className="h4">User profile</p>
-        <div className="border">
-          <ProfileForm profile={profile} />
+      {loading && <Loading />}
+      {error && <ErrorPage error={error} />}
+      <div>
+        <div className="m-3 p-2">
+          <div className="border">
+            <ProfileForm profile={profile} />
+          </div>
         </div>
+      </div>
+      <div>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => (window.location.href = "/management/upsert")}
+        >
+          Export data
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => (window.location.href = "/management/upsert")}
+        >
+          Import data
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => (window.location.href = "/management/upsert")}
+        >
+          Clear data
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => (window.location.href = "/management/upsert")}
+        >
+          Export settings
+        </button>
       </div>
     </Layout>
   );

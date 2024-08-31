@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
               <span className="h5">Web Health Tracker</span>
             </a>
           </li>
-          {/* <hr className="mb-1 mt-0" /> */}
           <li
             className={`p-3 m-0 nav-item h6 ${
               activeItem === "/dashboard" ? "bg-secondary" : ""
