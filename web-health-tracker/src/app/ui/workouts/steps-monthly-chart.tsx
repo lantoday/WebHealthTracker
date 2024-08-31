@@ -2,7 +2,8 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray, ChartType } from "@/app/lib/definitions";
+import { StepArray, ChartType, DisplayView } from "@/app/lib/definitions";
+import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface StepsDefaultChartProps {
   rawData: StepArray | null;
@@ -12,23 +13,23 @@ export function StepsMonthlyChartComponent({
   rawData,
 }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
+  const [sortedData, setSortedData] = useState<StepArray | []>(rawData ?? []);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
   const chartColor = localStorage.getItem("customColor") ?? "#0d6efd";
 
   useEffect(() => {
-    // Define the start date for the last 365 days
-    const startDate = new Date();
-    startDate.setDate(new Date().getDate() - 365);
+    //get sorted data
+    const fetchData = async () => {
+      const sortedData = await sortDataByDates(
+        rawData ?? [],
+        DisplayView.WEEKLY
+      );
+      setSortedData(sortedData);
+    };
+    fetchData();
+  }, [rawData]);
 
-    const sortedData = rawData
-      ? rawData
-          .slice()
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          )
-          .filter((entry) => new Date(entry.date) >= startDate)
-      : [];
-
+  useEffect(() => {
     // Aggregate daily data into monthly data
     const monthlyData = sortedData.reduce((acc, entry) => {
       const date = new Date(entry.date);
@@ -73,7 +74,7 @@ export function StepsMonthlyChartComponent({
         },
       });
     }
-  }, [chartType, chartColor, rawData]);
+  }, [chartType, chartColor, rawData, sortedData]);
 
   return (
     <>

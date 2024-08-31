@@ -2,7 +2,8 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray, ChartType } from "@/app/lib/definitions";
+import { StepArray, ChartType, DisplayView } from "@/app/lib/definitions";
+import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface StepsDefaultChartProps {
   rawData: StepArray | null;
@@ -10,10 +11,23 @@ interface StepsDefaultChartProps {
 
 export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
+  const [sortedData, setSortedData] = useState<StepArray | []>(rawData ?? []);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
   const [chartColor, setChartColor] = useState(
     localStorage.getItem("customColor") ?? "#0d6efd"
   ); // Default color
+
+  useEffect(() => {
+    //get sorted data
+    const fetchData = async () => {
+      const sortedData = await sortDataByDates(
+        rawData ?? [],
+        DisplayView.DAILY
+      );
+      setSortedData(sortedData);
+    };
+    fetchData();
+  }, [rawData]);
 
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value;
@@ -22,19 +36,6 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   };
 
   useEffect(() => {
-    // Define the start date for the last 30 days
-    const startDate = new Date();
-    startDate.setDate(new Date().getDate() - 30);
-
-    const sortedData = rawData
-      ? rawData
-          .slice()
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          )
-          .filter((entry) => new Date(entry.date) >= startDate)
-      : [];
-
     // Destroy the previous chart instance if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
@@ -64,7 +65,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         },
       });
     }
-  }, [chartType, chartColor, rawData]);
+  }, [chartType, chartColor, rawData, sortedData]);
 
   return (
     <>

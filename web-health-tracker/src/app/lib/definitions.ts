@@ -18,3 +18,9 @@ export enum ChartType {
   Line = "line",
   Bar = "bar",
 }
+
+export enum DisplayView {
+  DAILY = 30,
+  WEEKLY = 365,
+  MONTHLY = 365,
+}
