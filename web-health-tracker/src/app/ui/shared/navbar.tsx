@@ -33,6 +33,12 @@ const Navbar: React.FC = () => {
           </li>
           <hr className="m-2" />
           <li className="nav-item h6">
+            <a className="nav-link" href="/history">
+              Medical history
+            </a>
+          </li>
+          <hr className="m-2" />
+          <li className="nav-item h6">
             <a className="nav-link" href="/management">
               {/* <span data-feather="shopping-cart"></span> */}
               Management
