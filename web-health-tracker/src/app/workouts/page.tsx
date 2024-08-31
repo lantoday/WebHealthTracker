@@ -69,23 +69,21 @@ const ExercisePage: React.FC = () => {
               activeTab === "steps" ? "show active" : ""
             }`}
           >
-            <Steps />
+            {activeTab === "steps" && <Steps />}
           </div>
           <div
             className={`tab-pane fade ${
               activeTab === "running" ? "show active" : ""
             }`}
           >
-            running
-            {/* <Running /> */}
+            {activeTab === "running" && <Running />}
           </div>
           <div
             className={`tab-pane fade ${
               activeTab === "dancing" ? "show active" : ""
             }`}
           >
-            dancing
-            {/* <Dancing /> */}
+            {activeTab === "dancing" && <div>Dancing</div>}
           </div>
         </div>
       </div>
