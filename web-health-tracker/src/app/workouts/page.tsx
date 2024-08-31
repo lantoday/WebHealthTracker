@@ -1,15 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import Layout from "../ui/shared/main-layout";
-import Steps from "../ui/workouts/steps";
+import Layout from "@/app/ui/shared/main-layout";
+import Steps from "@/app/ui/workouts/steps/steps";
+import Running from "@/app/ui/workouts/running/running";
 import Tooltip from "@/app/ui/shared/tooltip";
 
 const ExercisePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("steps");
 
-  const stepsTooltipText = `Step count is the number of steps you take throughout the day.
-Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves step-like movement, including walking, running, stair-climbing, cross-country skiing, and even movement as you go about your daily chores.`;
+  const stepsTooltipText = `Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. 
+                            These devices count steps for any activity that involves step-like movement, including walking, running, stair-climbing, cross-country skiing, 
+                            and even movement as you go about your daily chores.`;
 
   return (
     <Layout>
@@ -74,7 +76,7 @@ Pedometers and digital activity trackers can help you determine your step count.
               activeTab === "running" ? "show active" : ""
             }`}
           >
-            Running
+            running
             {/* <Running /> */}
           </div>
           <div

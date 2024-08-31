@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import AddStepsModal from "@/app/ui/workouts/add-steps-modal";
-import StepsDailyChartComponent from "@/app/ui/workouts/steps-daily-chart";
-import StepsWeeklyChartComponent from "@/app/ui/workouts/steps-weekly-chart";
-import StepsMonthlyChartComponent from "@/app/ui/workouts/steps-monthly-chart";
+import AddStepsModal from "@/app/ui/workouts/steps/add-steps-modal";
+import StepsDailyChartComponent from "@/app/ui/workouts/steps/steps-daily-chart";
+import StepsWeeklyChartComponent from "@/app/ui/workouts/steps/steps-weekly-chart";
+import StepsMonthlyChartComponent from "@/app/ui/workouts/steps/steps-monthly-chart";
 import { getSteps } from "@/app/lib/dbactions/steps";
 import { StepArray } from "@/app/lib/definitions";
 
