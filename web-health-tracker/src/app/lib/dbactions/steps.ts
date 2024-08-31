@@ -1,5 +1,5 @@
 import { ObjectStoreName, doDatabaseTransaction } from "../indexedDB";
-import { StepArray, StepEntry } from "@/app/lib/definitions";
+import { StepArray, StepEntry } from "@/app/lib/utils/definitions";
 import { ProfileKeyName } from "./ProfileKeyName";
 
 // Function to save steps to the database

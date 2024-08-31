@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray, ChartType, DisplayView } from "@/app/lib/definitions";
+import { StepArray, ChartType, DisplayView } from "@/app/lib/utils/definitions";
 import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface StepsDefaultChartProps {

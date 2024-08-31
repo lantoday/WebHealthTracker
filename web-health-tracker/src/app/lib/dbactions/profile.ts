@@ -1,5 +1,5 @@
 import { ObjectStoreName, doDatabaseTransaction } from "../indexedDB";
-import { Profile } from "@/app/lib/definitions";
+import { Profile } from "@/app/lib/utils/definitions";
 import { ProfileKeyName } from "./ProfileKeyName";
 
 export async function saveProfileToDb(profile: Profile): Promise<string> {

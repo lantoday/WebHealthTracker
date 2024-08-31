@@ -1,6 +1,6 @@
 "use client";
 
-import { Profile } from "@/app/lib/definitions";
+import { Profile } from "@/app/lib/utils/definitions";
 
 interface ProfileFormProps {
   profile: Profile | null;

@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { saveStepsToDb, getSteps } from "@/app/lib/dbactions/steps";
-import { StepEntry } from "@/app/lib/definitions";
+import { StepEntry } from "@/app/lib/utils/definitions";
 // import { redirect } from "next/navigation";
 
 const StepsFormSchema = z.object({

@@ -1,4 +1,4 @@
-import { DisplayView, StepArray } from "../definitions";
+import { DisplayView, StepArray } from "./definitions";
 
 export async function sortDataByDates(
   rawData: StepArray,

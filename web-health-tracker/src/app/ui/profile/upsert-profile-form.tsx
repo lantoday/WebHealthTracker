@@ -2,7 +2,7 @@
 
 import { addProfile } from "@/app/lib/actions/profile";
 import { useFormState } from "react-dom";
-import { Profile } from "@/app/lib/definitions";
+import { Profile } from "@/app/lib/utils/definitions";
 import { useState } from "react";
 
 interface UpsertProfileFormProps {

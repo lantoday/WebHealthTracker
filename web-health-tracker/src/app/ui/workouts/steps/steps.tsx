@@ -6,13 +6,7 @@ import StepsDailyChartComponent from "@/app/ui/workouts/steps/steps-daily-chart"
 import StepsWeeklyChartComponent from "@/app/ui/workouts/steps/steps-weekly-chart";
 import StepsMonthlyChartComponent from "@/app/ui/workouts/steps/steps-monthly-chart";
 import { getSteps } from "@/app/lib/dbactions/steps";
-import { StepArray } from "@/app/lib/definitions";
-
-enum DisplayMode {
-  Daily = "daily",
-  Weekly = "weekly",
-  Monthly = "monthly",
-}
+import { StepArray, DisplayMode } from "@/app/lib/utils/definitions";
 
 export function StepsComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -24,3 +24,9 @@ export enum DisplayView {
   WEEKLY = 365,
   MONTHLY = 365,
 }
+
+export enum DisplayMode {
+  Daily = "daily",
+  Weekly = "weekly",
+  Monthly = "monthly",
+}

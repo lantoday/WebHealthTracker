@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "@/app/ui/shared/main-layout";
 import ProfileForm from "@/app/ui/profile/profile-form";
 import { getProfile } from "@/app/lib/dbactions/profile";
-import { Profile } from "@/app/lib/definitions";
+import { Profile } from "@/app/lib/utils/definitions";
 import Loading from "@/app/ui/shared/loading";
 import ErrorPage from "@/app/ui/shared/error";
 

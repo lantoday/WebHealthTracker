@@ -3,7 +3,7 @@
 import { z } from "zod";
 // import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { Profile } from "@/app/lib/definitions";
+import { Profile } from "@/app/lib/utils/definitions";
 import { saveProfileToDb } from "../dbactions/profile";
 
 const ProfileFormSchema = z.object({
