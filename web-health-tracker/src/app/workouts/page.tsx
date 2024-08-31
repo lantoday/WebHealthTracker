@@ -1,26 +1,8 @@
 "use client";
 
-// import React from "react";
-// import Layout from "../ui/shared/main-layout";
-// import Steps from "../ui/exercise/steps";
-
-// const ExercisePage: React.FC = () => {
-//   return (
-//     <Layout>
-//       <p className="h2 d-flex justify-content-center mt-4">Exercise page</p>
-//       <hr />
-//       <Steps />
-//     </Layout>
-//   );
-// };
-
-// export default ExercisePage;
-
 import React, { useState } from "react";
 import Layout from "../ui/shared/main-layout";
 import Steps from "../ui/exercise/steps";
-// import Running from "../ui/exercise/running"; // Assuming you have a Running component
-// import Dancing from "../ui/exercise/dancing"; // Assuming you have a Dancing component
 
 const ExercisePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("steps");

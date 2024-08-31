@@ -33,8 +33,8 @@ const ProfilePage: React.FC = () => {
 
   return (
     <Layout>
-      <p className="h2 d-flex justify-content-center mt-4">Management page</p>
-      <hr />
+      {/* <p className="h2 d-flex justify-content-center mt-4">Management page</p> */}
+      {/* <hr /> */}
       <div className="m-5 p-3">
         <p className="h4">User profile</p>
         <div className="border">

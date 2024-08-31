@@ -1,6 +1,18 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [activeItem, setActiveItem] = useState<string>(pathname);
+
+  useEffect(() => {
+    // Update active item based on current route
+    setActiveItem(pathname);
+  }, [pathname]);
+
   return (
     <nav id="sidebarMenu" className="col-md-3 col-lg-3 bg-light sidebar p-0">
       <div className="position-sticky">
@@ -10,41 +22,87 @@ const Navbar: React.FC = () => {
               <span className="h5">Web Health Tracker</span>
             </a>
           </li>
-          <hr className="mb-1 mt-0" />
-          <li className="nav-item h6">
-            <a className="nav-link" aria-current="page" href="/dashboard">
-              {/* <span data-feather="home"></span> */}
+          {/* <hr className="mb-1 mt-0" /> */}
+          <li
+            className={`p-3 m-0 nav-item h6 ${
+              activeItem === "/dashboard" ? "bg-secondary" : ""
+            }`}
+          >
+            <a
+              className={`nav-link ${
+                activeItem === "/dashboard" ? "text-light" : ""
+              }`}
+              href="/dashboard"
+              onClick={() => setActiveItem("/dashboard")}
+            >
               Dashboard
             </a>
           </li>
-          <hr className="m-2" />
-          <li className="nav-item h6">
-            <a className="nav-link" href="/workouts">
-              {/* <span data-feather="file"></span> */}
+          <hr className="m-0" />
+          <li
+            className={`p-3 m-0 nav-item h6 ${
+              activeItem === "/workouts" ? "bg-secondary" : ""
+            }`}
+          >
+            <a
+              className={`nav-link ${
+                activeItem === "/workouts" ? "text-light" : ""
+              }`}
+              href="/workouts"
+              onClick={() => setActiveItem("/workouts")}
+            >
               Workouts
             </a>
           </li>
-          <hr className="m-2" />
-          <li className="nav-item h6">
-            <a className="nav-link" href="/sleep">
-              {/* <span data-feather="shopping-cart"></span> */}
+          <hr className="m-0" />
+          <li
+            className={`p-3 m-0 nav-item h6 ${
+              activeItem === "/sleep" ? "bg-secondary" : ""
+            }`}
+          >
+            <a
+              className={`nav-link ${
+                activeItem === "/sleep" ? "text-light" : ""
+              }`}
+              href="/sleep"
+              onClick={() => setActiveItem("/sleep")}
+            >
               Sleep
             </a>
           </li>
-          <hr className="m-2" />
-          <li className="nav-item h6">
-            <a className="nav-link" href="/history">
+          <hr className="m-0" />
+          <li
+            className={`p-3 m-0 nav-item h6 ${
+              activeItem === "/history" ? "bg-secondary" : ""
+            }`}
+          >
+            <a
+              className={`nav-link ${
+                activeItem === "/history" ? "text-light" : ""
+              }`}
+              href="/history"
+              onClick={() => setActiveItem("/history")}
+            >
               Medical history
             </a>
           </li>
-          <hr className="m-2" />
-          <li className="nav-item h6">
-            <a className="nav-link" href="/management">
-              {/* <span data-feather="shopping-cart"></span> */}
+          <hr className="m-0" />
+          <li
+            className={`p-3 m-0 nav-item h6 ${
+              activeItem === "/management" ? "bg-secondary" : ""
+            }`}
+          >
+            <a
+              className={`nav-link ${
+                activeItem === "/management" ? "text-light" : ""
+              }`}
+              href="/management"
+              onClick={() => setActiveItem("/management")}
+            >
               Management
             </a>
           </li>
-          <hr className="m-2" />
+          <hr className="m-0" />
         </ul>
       </div>
     </nav>
