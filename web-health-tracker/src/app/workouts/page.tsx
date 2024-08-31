@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Layout from "../ui/shared/main-layout";
-import Steps from "../ui/exercise/steps";
+import Steps from "../ui/workouts/steps";
 
 const ExercisePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("steps");

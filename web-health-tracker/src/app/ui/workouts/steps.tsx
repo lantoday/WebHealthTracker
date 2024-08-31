@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import AddStepsModal from "@/app/ui/exercise/add-steps-modal";
-import StepsDailyChartComponent from "@/app/ui/exercise/steps-daily-chart";
+import AddStepsModal from "@/app/ui/workouts/add-steps-modal";
+import StepsDailyChartComponent from "@/app/ui/workouts/steps-daily-chart";
 import Tooltip from "@/app/ui/shared/tooltip";
 import { getSteps } from "@/app/lib/dbactions/steps";
 import { StepArray } from "@/app/lib/definitions";

@@ -19,13 +19,6 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   const startDate = new Date();
   startDate.setDate(new Date().getDate() - 30);
 
-  const sortedData = rawData
-    ? rawData
-        .slice()
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .filter((entry) => new Date(entry.date) >= startDate)
-    : [];
-
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value;
     setChartColor(newColor);
@@ -33,6 +26,15 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   };
 
   useEffect(() => {
+    const sortedData = rawData
+      ? rawData
+          .slice()
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          )
+          .filter((entry) => new Date(entry.date) >= startDate)
+      : [];
+
     // Destroy the previous chart instance if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
@@ -62,7 +64,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         },
       });
     }
-  }, [chartType, chartColor, rawData, sortedData]);
+  }, [chartType, chartColor, rawData, startDate]);
 
   return (
     <>
