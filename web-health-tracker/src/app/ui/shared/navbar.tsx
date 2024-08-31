@@ -19,9 +19,9 @@ const Navbar: React.FC = () => {
           </li>
           <hr className="m-2" />
           <li className="nav-item h6">
-            <a className="nav-link" href="/exercise">
+            <a className="nav-link" href="/workouts">
               {/* <span data-feather="file"></span> */}
-              Exercise
+              Workouts
             </a>
           </li>
           <hr className="m-2" />

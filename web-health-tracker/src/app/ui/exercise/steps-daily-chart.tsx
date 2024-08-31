@@ -50,7 +50,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
           labels: sortedData.map((entry) => entry.date),
           datasets: [
             {
-              label: "Daily step counts (last 30 days)",
+              label: "Daily steps count (last 30 days)",
               data: sortedData.map((entry) => entry.steps),
               fill: false,
               borderColor: chartColor,
@@ -62,7 +62,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
         },
       });
     }
-  }, [chartType, chartColor, rawData]);
+  }, [chartType, chartColor, rawData, sortedData]);
 
   return (
     <>
