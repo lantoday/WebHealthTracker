@@ -133,20 +133,16 @@ body {
 
 .tooltip-text {
   visibility: hidden;
-  /* background-color: var(--bs-primary-border-subtle, #6c757d); */
+  width: 450px;
   background-color: black;
-  color: white;
+  color: #fff;
   text-align: left;
-  border-radius: 5px;
-  padding: 16px;
+  border-radius: 6px;
+  padding: 8px;
+
+  /* Position the tooltip */
   position: absolute;
   z-index: 1;
-  left: 100%; /* Position tooltip to the right of the container */
-  top: 50%; /* Center the tooltip vertically */
-  margin-left: 10px; /* Add some space between the tooltip and the container */
-  transform: translateY(-50%); /* Center the tooltip vertically */
-  transition: opacity 0.3s;
-  width: 600px;
 }
 
 .tooltip-container:hover .tooltip-text {
