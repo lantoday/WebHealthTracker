@@ -4,10 +4,11 @@ import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import {
   RunningArray,
+  // RunningEntry,
   ChartType,
   DisplayView,
 } from "@/app/lib/utils/definitions";
-import { sortRunningDataByDates } from "@/app/lib/utils/sortDataByDates";
+import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface RunningDefaultChartProps {
   rawData: RunningArray | null;
@@ -28,7 +29,7 @@ export function RunningDailyChartComponent({
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortRunningDataByDates(
+      const sortedData = await sortDataByDates(
         rawData ?? [],
         DisplayView.DAILY
       );

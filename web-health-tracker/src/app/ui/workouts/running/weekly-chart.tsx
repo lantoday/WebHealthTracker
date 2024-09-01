@@ -7,7 +7,7 @@ import {
   ChartType,
   DisplayView,
 } from "@/app/lib/utils/definitions";
-import { sortRunningDataByDates } from "@/app/lib/utils/sortDataByDates";
+import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface RunningDefaultChartProps {
   rawData: RunningArray | null;
@@ -26,7 +26,7 @@ export function RunningWeeklyChartComponent({
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortRunningDataByDates(
+      const sortedData = await sortDataByDates(
         rawData ?? [],
         DisplayView.WEEKLY
       );
