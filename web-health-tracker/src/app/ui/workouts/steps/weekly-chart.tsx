@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import { StepArray, ChartType, DisplayView } from "@/app/lib/utils/definitions";
-import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
+import { sortStepsDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 interface StepsDefaultChartProps {
   rawData: StepArray | null;
@@ -18,7 +18,7 @@ export function StepsWeeklyChartComponent({ rawData }: StepsDefaultChartProps) {
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortDataByDates(
+      const sortedData = await sortStepsDataByDates(
         rawData ?? [],
         DisplayView.WEEKLY
       );

@@ -1,6 +1,6 @@
 import { ObjectStoreName, doDatabaseTransaction } from "../indexedDB";
 import { StepArray, StepEntry } from "@/app/lib/utils/definitions";
-import { ProfileKeyName } from "./ProfileKeyName";
+import { ObjectKeyName } from "./ObjectKeyName";
 
 // Function to save steps to the database
 export async function saveStepsToDb(stepEntry: StepEntry): Promise<string> {
@@ -28,21 +28,19 @@ export async function saveStepsToDb(stepEntry: StepEntry): Promise<string> {
     "readwrite",
     ObjectStoreName.EXERCISE,
     (store: { put: (arg0: StepArray, arg1: string) => any }) =>
-      store.put(updatedSteps, ProfileKeyName.STEPS)
+      store.put(updatedSteps, ObjectKeyName.STEPS)
   );
 
   return "Steps saved successfully!";
 }
 
 export async function getSteps(): Promise<StepArray | null> {
-  console.log("get steps");
   const steps = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.EXERCISE,
-    (store) => store.get(ProfileKeyName.STEPS)
+    (store) => store.get(ObjectKeyName.STEPS)
   );
 
-  console.log({ steps });
   if (steps instanceof Array) {
     return steps;
   }

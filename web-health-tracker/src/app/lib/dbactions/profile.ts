@@ -1,13 +1,13 @@
 import { ObjectStoreName, doDatabaseTransaction } from "../indexedDB";
 import { Profile } from "@/app/lib/utils/definitions";
-import { ProfileKeyName } from "./ProfileKeyName";
+import { ObjectKeyName } from "./ObjectKeyName";
 
 export async function saveProfileToDb(profile: Profile): Promise<string> {
   await doDatabaseTransaction(
     "readwrite",
     ObjectStoreName.PROFILE,
     (store: { put: (arg0: Profile, arg1: string) => any }) =>
-      store.put(profile, ProfileKeyName.PROFILE)
+      store.put(profile, ObjectKeyName.PROFILE)
   );
 
   console.log({ profile });
@@ -19,7 +19,7 @@ export async function getProfile(): Promise<Profile | null> {
   const profile = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.PROFILE,
-    (store: { get: (arg0: string) => any }) => store.get(ProfileKeyName.PROFILE)
+    (store: { get: (arg0: string) => any }) => store.get(ObjectKeyName.PROFILE)
   );
 
   console.log({ profile });

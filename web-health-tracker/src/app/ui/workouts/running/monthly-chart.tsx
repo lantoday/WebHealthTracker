@@ -2,40 +2,55 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray, ChartType, DisplayView } from "@/app/lib/utils/definitions";
-import { sortStepsDataByDates } from "@/app/lib/utils/sortDataByDates";
+import {
+  RunningArray,
+  ChartType,
+  DisplayView,
+} from "@/app/lib/utils/definitions";
+import { sortRunningDataByDates } from "@/app/lib/utils/sortDataByDates";
 
-interface StepsDefaultChartProps {
-  rawData: StepArray | null;
+interface RunningDefaultChartProps {
+  rawData: RunningArray | null;
 }
 
-export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
+export function RunningMonthlyChartComponent({
+  rawData,
+}: RunningDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [sortedData, setSortedData] = useState<StepArray | []>(rawData ?? []);
+  const [sortedData, setSortedData] = useState<RunningArray | []>(
+    rawData ?? []
+  );
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
-  const [chartColor, setChartColor] = useState(
-    localStorage.getItem("customColor") ?? "#0d6efd"
-  ); // Default color
+  const chartColor = localStorage.getItem("customColor") ?? "#0d6efd";
 
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortStepsDataByDates(
+      const sortedData = await sortRunningDataByDates(
         rawData ?? [],
-        DisplayView.DAILY
+        DisplayView.WEEKLY
       );
       setSortedData(sortedData);
     };
     fetchData();
   }, [rawData]);
 
-  const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newColor = event.target.value;
-    setChartColor(newColor);
-    localStorage.setItem("customColor", newColor);
-  };
-
   useEffect(() => {
+    // Aggregate daily data into monthly data
+    const monthlyData = sortedData.reduce((acc, entry) => {
+      const date = new Date(entry.date);
+      const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`; // Format as YYYY-M
+
+      if (!acc[monthYear]) {
+        acc[monthYear] = 0;
+      }
+      acc[monthYear] += entry.kilometer;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const labels = Object.keys(monthlyData).sort(); // Sort months
+    const data = labels.map((month) => monthlyData[month]);
+
     // Destroy the previous chart instance if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
@@ -43,18 +58,18 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "stepsDailyChart"
+      "runningMonthlyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
       chartRef.current = new Chart(ctx, {
         type: chartType,
         data: {
-          labels: sortedData.map((entry) => entry.date),
+          labels,
           datasets: [
             {
-              label: "Daily steps count (last 30 days)",
-              data: sortedData.map((entry) => entry.steps),
+              label: "Monthly running data (last 12 months)",
+              data,
               fill: false,
               borderColor: chartColor,
               backgroundColor: chartColor,
@@ -98,23 +113,10 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
             </label>
           </div>
         </div>
-        <div className="form-check m-2 d-flex justify-content-end">
-          <label htmlFor="chartColor" className="form-check-label me-2">
-            Select color:
-          </label>
-          <input
-            type="color"
-            id="chartColor"
-            name="chartColor"
-            value={chartColor}
-            onChange={handleColorChange}
-            className="form-control form-control-color form-control-sm"
-          />
-        </div>
       </div>
       <canvas
         className="w-100"
-        id="stepsDailyChart"
+        id="runningMonthlyChart"
         width="900"
         height="380"
       ></canvas>
@@ -122,4 +124,4 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   );
 }
 
-export default StepsDailyChartComponent;
+export default RunningMonthlyChartComponent;

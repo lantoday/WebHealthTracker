@@ -14,6 +14,13 @@ export type StepEntry = {
 
 export type StepArray = StepEntry[];
 
+export type RunningEntry = {
+  date: string;
+  kilometer: number;
+};
+
+export type RunningArray = RunningEntry[];
+
 export enum ChartType {
   Line = "line",
   Bar = "bar",

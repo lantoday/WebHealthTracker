@@ -1,18 +1,18 @@
 "use client";
 
 import { z } from "zod";
-import { saveStepsToDb } from "@/app/lib/dbactions/steps";
-import { StepEntry } from "@/app/lib/utils/definitions";
+import { saveRunningDataToDb } from "@/app/lib/dbactions/running";
+import { RunningEntry } from "@/app/lib/utils/definitions";
 // import { redirect } from "next/navigation";
 
-const StepsFormSchema = z.object({
+const RunningFormSchema = z.object({
   date: z.string(),
-  steps: z.number(),
+  kilometer: z.number(),
 });
 
-export async function addSteps(formData: any) {
+export async function addRunningData(formData: any) {
   // Validate the form data
-  const validatedFields = StepsFormSchema.safeParse(formData);
+  const validatedFields = RunningFormSchema.safeParse(formData);
 
   if (!validatedFields.success) {
     // Return validation errors
@@ -23,19 +23,19 @@ export async function addSteps(formData: any) {
   }
 
   // Prepare data for insertion into the database
-  const { date, steps } = validatedFields.data;
-  const stepsData: StepEntry = { date, steps };
+  const { date, kilometer } = validatedFields.data;
+  const runningData: RunningEntry = { date, kilometer };
 
   // Save to database and handle the result
   try {
-    const message = await saveStepsToDb(stepsData);
+    const message = await saveRunningDataToDb(runningData);
     // redirect("/exercise"); //cause save error don't know why yet
     return { errors: {}, message };
   } catch (error) {
     // Handle database errors
     return {
       errors: {},
-      message: "Failed to save steps. Please try again later.",
+      message: "Failed to save running data. Please try again later.",
     };
   }
 }

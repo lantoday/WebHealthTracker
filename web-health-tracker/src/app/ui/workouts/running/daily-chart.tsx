@@ -2,16 +2,24 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { StepArray, ChartType, DisplayView } from "@/app/lib/utils/definitions";
-import { sortStepsDataByDates } from "@/app/lib/utils/sortDataByDates";
+import {
+  RunningArray,
+  ChartType,
+  DisplayView,
+} from "@/app/lib/utils/definitions";
+import { sortRunningDataByDates } from "@/app/lib/utils/sortDataByDates";
 
-interface StepsDefaultChartProps {
-  rawData: StepArray | null;
+interface RunningDefaultChartProps {
+  rawData: RunningArray | null;
 }
 
-export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
+export function RunningDailyChartComponent({
+  rawData,
+}: RunningDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [sortedData, setSortedData] = useState<StepArray | []>(rawData ?? []);
+  const [sortedData, setSortedData] = useState<RunningArray | []>(
+    rawData ?? []
+  );
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
   const [chartColor, setChartColor] = useState(
     localStorage.getItem("customColor") ?? "#0d6efd"
@@ -20,7 +28,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortStepsDataByDates(
+      const sortedData = await sortRunningDataByDates(
         rawData ?? [],
         DisplayView.DAILY
       );
@@ -43,7 +51,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "stepsDailyChart"
+      "runningDailyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
@@ -53,8 +61,8 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
           labels: sortedData.map((entry) => entry.date),
           datasets: [
             {
-              label: "Daily steps count (last 30 days)",
-              data: sortedData.map((entry) => entry.steps),
+              label: "Daily running data (last 30 days)",
+              data: sortedData.map((entry) => entry.kilometer),
               fill: false,
               borderColor: chartColor,
               backgroundColor: chartColor,
@@ -114,7 +122,7 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
       </div>
       <canvas
         className="w-100"
-        id="stepsDailyChart"
+        id="runningDailyChart"
         width="900"
         height="380"
       ></canvas>
@@ -122,4 +130,4 @@ export function StepsDailyChartComponent({ rawData }: StepsDefaultChartProps) {
   );
 }
 
-export default StepsDailyChartComponent;
+export default RunningDailyChartComponent;
