@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Layout from "@/app/ui/shared/main-layout";
 import Steps from "@/app/ui/workouts/steps/steps";
 import Running from "@/app/ui/workouts/running/running";
+import OtherWorkouts from "@/app/ui/workouts/others/others";
 import Tooltip from "@/app/ui/shared/tooltip";
 
 const ExercisePage: React.FC = () => {
@@ -83,7 +84,7 @@ const ExercisePage: React.FC = () => {
               activeTab === "others" ? "show active" : ""
             }`}
           >
-            {activeTab === "others" && <div>Others</div>}
+            {activeTab === "others" && <OtherWorkouts />}
           </div>
         </div>
       </div>

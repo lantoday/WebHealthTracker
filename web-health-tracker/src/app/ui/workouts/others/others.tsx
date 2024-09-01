@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import AddRunningModal from "@/app/ui/workouts/running/add-running-modal";
-import DailyChart from "@/app/ui/workouts/running/daily-chart";
-import WeeklyChart from "@/app/ui/workouts/running/weekly-chart";
-import MonthlyChart from "@/app/ui/workouts/running/monthly-chart";
-import { getRunningData } from "@/app/lib/dbactions/running";
-import { RunningArray, DisplayMode } from "@/app/lib/utils/definitions";
+import AddOtherWorkoutModal from "@/app/ui/workouts/others/add-others-modal";
+import DailyChart from "@/app/ui/workouts/others/daily-chart";
+import WeeklyChart from "@/app/ui/workouts/others/weekly-chart";
+import MonthlyChart from "@/app/ui/workouts/others/monthly-chart";
+import { getOtherWorkoutData } from "@/app/lib/dbactions/other-workouts";
+import { OthersArray, DisplayMode } from "@/app/lib/utils/definitions";
 
 export function RunningComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [rawData, setRawData] = useState<RunningArray | null>(null);
+  const [rawData, setRawData] = useState<OthersArray | null>(null);
   const [displayMode, setDisplayMode] = useState<DisplayMode>(
     DisplayMode.Daily
   );
@@ -18,7 +18,7 @@ export function RunningComponent() {
   useEffect(() => {
     async function getRawData() {
       if (!isModalOpen) {
-        const rawData = await getRunningData();
+        const rawData = await getOtherWorkoutData();
         setRawData(rawData);
       }
     }
@@ -93,10 +93,10 @@ export function RunningComponent() {
                 className="btn btn-sm btn-outline-primary"
                 onClick={() => setIsModalOpen(true)}
               >
-                Add running data
+                Add workout data
               </button>
               {isModalOpen && (
-                <AddRunningModal onClose={() => setIsModalOpen(false)} />
+                <AddOtherWorkoutModal onClose={() => setIsModalOpen(false)} />
               )}
             </div>
           </div>
@@ -106,17 +106,17 @@ export function RunningComponent() {
       {!hasRunningData && (
         <div className="d-flex justify-content-center border">
           <div className="p-5">
-            <p className="h6">No Running data found</p>
+            <p className="h6">No workout data found</p>
             <hr />
             <button
               type="button"
               className="btn btn-outline-primary"
               onClick={() => setIsModalOpen(true)}
             >
-              Add running data
+              Add workout data
             </button>
             {isModalOpen && (
-              <AddRunningModal onClose={() => setIsModalOpen(false)} />
+              <AddOtherWorkoutModal onClose={() => setIsModalOpen(false)} />
             )}
           </div>
         </div>

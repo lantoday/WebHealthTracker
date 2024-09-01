@@ -3,23 +3,21 @@
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import {
-  RunningArray,
+  OthersArray,
   ChartType,
   DisplayView,
 } from "@/app/lib/utils/definitions";
 import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
-interface RunningDefaultChartProps {
-  rawData: RunningArray | null;
+interface OtherWorkoutDefaultChartProps {
+  rawData: OthersArray | null;
 }
 
-export function RunningDailyChartComponent({
+export function OtherWorkoutDailyChartComponent({
   rawData,
-}: RunningDefaultChartProps) {
+}: OtherWorkoutDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [sortedData, setSortedData] = useState<RunningArray | []>(
-    rawData ?? []
-  );
+  const [sortedData, setSortedData] = useState<OthersArray | []>(rawData ?? []);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
   const [chartColor, setChartColor] = useState(
     localStorage.getItem("customColor") ?? "#0d6efd"
@@ -51,7 +49,7 @@ export function RunningDailyChartComponent({
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "runningDailyChart"
+      "othersDailyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
@@ -61,7 +59,16 @@ export function RunningDailyChartComponent({
           labels: sortedData.map((entry) => entry.date),
           datasets: [
             {
-              label: "Daily running data (last 30 days)",
+              label: "Kilocalories (last 30 days)",
+              data: sortedData.map((entry) => entry.kilocalories),
+              fill: false,
+              borderColor: "#0d6efd",
+              backgroundColor: "#0d6efd",
+              borderWidth: 1,
+              pointRadius: 2,
+            },
+            {
+              label: "Kilometers (last 30 days)",
               data: sortedData.map((entry) => entry.kilometer),
               fill: false,
               borderColor: chartColor,
@@ -122,7 +129,7 @@ export function RunningDailyChartComponent({
       </div>
       <canvas
         className="w-100"
-        id="runningDailyChart"
+        id="othersDailyChart"
         width="900"
         height="380"
       ></canvas>
@@ -130,4 +137,4 @@ export function RunningDailyChartComponent({
   );
 }
 
-export default RunningDailyChartComponent;
+export default OtherWorkoutDailyChartComponent;

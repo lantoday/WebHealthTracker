@@ -3,47 +3,56 @@
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import {
-  RunningArray,
+  OthersArray,
   ChartType,
   DisplayView,
 } from "@/app/lib/utils/definitions";
 import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
-interface RunningDefaultChartProps {
-  rawData: RunningArray | null;
+interface OtherWorkoutDefaultChartProps {
+  rawData: OthersArray | null;
 }
 
-export function RunningDailyChartComponent({
+export function OtherWorkoutMonthlyChartComponent({
   rawData,
-}: RunningDefaultChartProps) {
+}: OtherWorkoutDefaultChartProps) {
   const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
-  const [sortedData, setSortedData] = useState<RunningArray | []>(
-    rawData ?? []
-  );
+  const [sortedData, setSortedData] = useState<OthersArray | []>(rawData ?? []);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
-  const [chartColor, setChartColor] = useState(
-    localStorage.getItem("customColor") ?? "#0d6efd"
-  ); // Default color
+  const chartColor = localStorage.getItem("customColor") ?? "#0d6efd";
 
   useEffect(() => {
-    //get sorted data
+    // Get sorted data
     const fetchData = async () => {
       const sortedData = await sortDataByDates(
         rawData ?? [],
-        DisplayView.DAILY
+        DisplayView.MONTHLY
       );
       setSortedData(sortedData);
     };
     fetchData();
   }, [rawData]);
 
-  const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newColor = event.target.value;
-    setChartColor(newColor);
-    localStorage.setItem("customColor", newColor);
-  };
-
   useEffect(() => {
+    // Aggregate daily data into monthly data
+    const monthlyData = sortedData.reduce((acc, entry) => {
+      const date = new Date(entry.date);
+      const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`; // Format as YYYY-M
+
+      if (!acc[monthYear]) {
+        acc[monthYear] = { kilometer: 0, kilocalories: 0 };
+      }
+      acc[monthYear].kilometer += entry.kilometer;
+      acc[monthYear].kilocalories += entry.kilocalories;
+      return acc;
+    }, {} as Record<string, { kilometer: number; kilocalories: number }>);
+
+    const labels = Object.keys(monthlyData).sort(); // Sort months
+    const kilometersData = labels.map((month) => monthlyData[month].kilometer);
+    const kilocaloriesData = labels.map(
+      (month) => monthlyData[month].kilocalories
+    );
+
     // Destroy the previous chart instance if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
@@ -51,21 +60,30 @@ export function RunningDailyChartComponent({
 
     // Initialize the chart
     const ctx = document.getElementById(
-      "runningDailyChart"
+      "othersMonthlyChart"
     ) as HTMLCanvasElement | null;
 
     if (ctx) {
       chartRef.current = new Chart(ctx, {
         type: chartType,
         data: {
-          labels: sortedData.map((entry) => entry.date),
+          labels,
           datasets: [
             {
-              label: "Daily running data (last 30 days)",
-              data: sortedData.map((entry) => entry.kilometer),
+              label: "Kilometers (last 12 months)",
+              data: kilometersData,
               fill: false,
-              borderColor: chartColor,
+              borderColor: chartColor, // Different color for kilometers
               backgroundColor: chartColor,
+              borderWidth: 1,
+              pointRadius: 2,
+            },
+            {
+              label: "Kilocalories (last 12 months)",
+              data: kilocaloriesData,
+              fill: false,
+              borderColor: "#0d6efd", // Different color for kilocalories
+              backgroundColor: "#0d6efd",
               borderWidth: 1,
               pointRadius: 2,
             },
@@ -106,23 +124,10 @@ export function RunningDailyChartComponent({
             </label>
           </div>
         </div>
-        <div className="form-check m-2 d-flex justify-content-end">
-          <label htmlFor="chartColor" className="form-check-label me-2">
-            Select color:
-          </label>
-          <input
-            type="color"
-            id="chartColor"
-            name="chartColor"
-            value={chartColor}
-            onChange={handleColorChange}
-            className="form-control form-control-color form-control-sm"
-          />
-        </div>
       </div>
       <canvas
         className="w-100"
-        id="runningDailyChart"
+        id="othersMonthlyChart"
         width="900"
         height="380"
       ></canvas>
@@ -130,4 +135,4 @@ export function RunningDailyChartComponent({
   );
 }
 
-export default RunningDailyChartComponent;
+export default OtherWorkoutMonthlyChartComponent;

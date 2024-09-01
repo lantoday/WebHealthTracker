@@ -21,6 +21,14 @@ export type RunningEntry = {
 
 export type RunningArray = RunningEntry[];
 
+export type OthersEntry = {
+  date: string;
+  kilocalories: number;
+  kilometer: number;
+};
+
+export type OthersArray = OthersEntry[];
+
 export enum ChartType {
   Line = "line",
   Bar = "bar",
