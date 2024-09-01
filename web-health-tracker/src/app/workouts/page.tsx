@@ -54,11 +54,11 @@ const ExercisePage: React.FC = () => {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link ${activeTab === "dancing" ? "active" : ""}`}
-              onClick={() => setActiveTab("dancing")}
+              className={`nav-link ${activeTab === "others" ? "active" : ""}`}
+              onClick={() => setActiveTab("others")}
               href="#"
             >
-              Dancing
+              Other workouts
             </a>
           </li>
         </ul>
@@ -80,10 +80,10 @@ const ExercisePage: React.FC = () => {
           </div>
           <div
             className={`tab-pane fade ${
-              activeTab === "dancing" ? "show active" : ""
+              activeTab === "others" ? "show active" : ""
             }`}
           >
-            {activeTab === "dancing" && <div>Dancing</div>}
+            {activeTab === "others" && <div>Others</div>}
           </div>
         </div>
       </div>
