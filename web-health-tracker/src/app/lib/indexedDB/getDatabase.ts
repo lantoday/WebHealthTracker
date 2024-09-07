@@ -24,6 +24,7 @@ export function getDatabase(): Promise<IDBDatabase> {
       request.result.createObjectStore(ObjectStoreName.PROFILE);
       request.result.createObjectStore(ObjectStoreName.EXERCISE);
       request.result.createObjectStore(ObjectStoreName.HISTORY);
+      request.result.createObjectStore(ObjectStoreName.SLEEP);
     });
 
     // Handle success

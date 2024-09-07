@@ -106,7 +106,7 @@ export function RunningComponent() {
       {!hasRunningData && (
         <div className="d-flex justify-content-center border">
           <div className="p-5">
-            <p className="h6">No Running data found</p>
+            <p className="h6">No running data found</p>
             <hr />
             <button
               type="button"

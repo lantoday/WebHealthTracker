@@ -10,6 +10,7 @@ export const ObjectStoreName = {
   PROFILE: "profile",
   EXERCISE: "exercise",
   HISTORY: "history",
+  SLEEP: "sleep",
 } as const;
 export type ObjectStoreName = EnumTypeOf<typeof ObjectStoreName>;
 

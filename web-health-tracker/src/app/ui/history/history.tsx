@@ -9,7 +9,7 @@ import { HistoryArray } from "@/app/lib/utils/definitions";
 const History: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rawData, setRawData] = useState<HistoryArray | null>(null);
-  const hasHistory = true;
+  const hasHistory = Array.isArray(rawData) && rawData.length > 0;
 
   useEffect(() => {
     async function getRawData() {
