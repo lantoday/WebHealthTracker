@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from "../ui/shared/main-layout";
+import Sleep from "../ui/sleep/sleep";
 
-const Sleep: React.FC = () => {
+const SleepPage: React.FC = () => {
   return (
     <Layout>
-      Sleep Page
-      {/* Your content here */}
+      <Sleep />
     </Layout>
   );
 };
 
-export default Sleep;
+export default SleepPage;

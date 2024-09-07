@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
           </li>
           {/* <li
             className={`p-3 m-0 nav-item h6 ${
-              activeItem === "/dashboard" ? "bg-secondary" : ""
+              activeItem === "/dashboard" ? "bg-primary" : ""
             }`}
           >
             <a
@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item h6 ${
-              activeItem === "/workouts" ? "bg-secondary" : ""
+              activeItem === "/workouts" ? "bg-primary" : ""
             }`}
           >
             <a
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item h6 ${
-              activeItem === "/sleep" ? "bg-secondary" : ""
+              activeItem === "/sleep" ? "bg-primary" : ""
             }`}
           >
             <a
@@ -66,13 +66,13 @@ const Navbar: React.FC = () => {
               href="/sleep"
               onClick={() => setActiveItem("/sleep")}
             >
-              Sleep
+              Sleep data
             </a>
           </li>
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item h6 ${
-              activeItem === "/history" ? "bg-secondary" : ""
+              activeItem === "/history" ? "bg-primary" : ""
             }`}
           >
             <a
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item h6 ${
-              activeItem === "/management" ? "bg-secondary" : ""
+              activeItem === "/management" ? "bg-primary" : ""
             }`}
           >
             <a

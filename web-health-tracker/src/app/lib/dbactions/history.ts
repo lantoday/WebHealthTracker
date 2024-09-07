@@ -22,7 +22,7 @@ export async function saveHistoryToDb(
       store.put(updatedHistory, ObjectKeyName.HISTORY)
   );
 
-  return "History saved successfully!";
+  return "History data saved successfully!";
 }
 
 export async function getHistory(): Promise<HistoryArray | null> {

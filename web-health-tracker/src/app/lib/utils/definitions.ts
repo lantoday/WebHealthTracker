@@ -37,6 +37,13 @@ export type HistoryEntry = {
 
 export type HistoryArray = HistoryEntry[];
 
+export type SleepEntry = {
+  date: string;
+  hour: number;
+};
+
+export type SleepArray = SleepEntry[];
+
 export enum ChartType {
   Line = "line",
   Bar = "bar",
