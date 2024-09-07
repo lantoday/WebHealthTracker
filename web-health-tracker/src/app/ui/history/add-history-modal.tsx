@@ -100,7 +100,6 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
                   Details:
                 </label>
                 <textarea
-                  maxLength={50}
                   rows={5}
                   cols={50}
                   className="form-control"

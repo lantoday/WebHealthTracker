@@ -29,8 +29,8 @@ export function Records({ data }: HistoryDefaultChartProps) {
     <>
       <div className="py-5 p-3">
         <ul className="timeline">
-          {sortedData.map((entry: HistoryEntry) => (
-            <HistoryItem data={entry} />
+          {sortedData.map((entry: HistoryEntry, index: number) => (
+            <HistoryItem key={index} data={entry} />
           ))}
         </ul>
       </div>
