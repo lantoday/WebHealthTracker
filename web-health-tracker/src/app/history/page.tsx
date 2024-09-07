@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from "../ui/shared/main-layout";
+import History from "../ui/history/history";
 
-const History: React.FC = () => {
+const HistoryPage: React.FC = () => {
   return (
     <Layout>
-      Medical history Page
-      {/* Your content here */}
+      <History />
     </Layout>
   );
 };
 
-export default History;
+export default HistoryPage;

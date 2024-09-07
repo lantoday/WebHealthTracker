@@ -29,6 +29,14 @@ export type OthersEntry = {
 
 export type OthersArray = OthersEntry[];
 
+export type HistoryEntry = {
+  date: string;
+  title: string;
+  details: string;
+};
+
+export type HistoryArray = HistoryEntry[];
+
 export enum ChartType {
   Line = "line",
   Bar = "bar",

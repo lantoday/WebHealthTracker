@@ -9,6 +9,7 @@ export const ObjectKeyName = {
   STEPS: "steps",
   RUNNING: "running",
   OTHERS: "others",
+  HISTORY: "history",
 } as const;
 export type ObjectKeyName = EnumTypeOf<typeof ObjectKeyName>;
 

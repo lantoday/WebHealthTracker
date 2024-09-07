@@ -21,8 +21,9 @@ export function getDatabase(): Promise<IDBDatabase> {
 
     // Create the "data" object store when database is first created
     request.addEventListener("upgradeneeded", (e) => {
-      request.result.createObjectStore(ObjectStoreName.PROFILE); //TODO should I use LocalStorage instead of IndexedDB for profile??
+      request.result.createObjectStore(ObjectStoreName.PROFILE);
       request.result.createObjectStore(ObjectStoreName.EXERCISE);
+      request.result.createObjectStore(ObjectStoreName.HISTORY);
     });
 
     // Handle success

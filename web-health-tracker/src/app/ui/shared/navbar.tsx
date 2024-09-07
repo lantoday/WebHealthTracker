@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
               <span className="h5">Web Health Tracker</span>
             </a>
           </li>
-          <li
+          {/* <li
             className={`p-3 m-0 nav-item h6 ${
               activeItem === "/dashboard" ? "bg-secondary" : ""
             }`}
@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             >
               Dashboard
             </a>
-          </li>
+          </li> */}
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item h6 ${
