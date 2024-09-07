@@ -19,7 +19,7 @@ export function Records({ data }: HistoryDefaultChartProps) {
   useEffect(() => {
     //get sorted data
     const fetchData = async () => {
-      const sortedData = await sortDataByDates(data ?? [], DisplayView.DAILY);
+      const sortedData = await sortDataByDates(data ?? [], DisplayView.ALL);
       setSortedData(sortedData);
     };
     fetchData();

@@ -53,6 +53,7 @@ export enum DisplayView {
   DAILY = 30,
   WEEKLY = 365,
   MONTHLY = 365,
+  ALL = 0,
 }
 
 export enum DisplayMode {
