@@ -4,7 +4,7 @@ import { ObjectKeyName } from "./ObjectKeyName";
 
 // Function to save history to the database
 export async function saveHistoryToDb(
-  HistoryEntry: HistoryEntry
+  historyEntry: HistoryEntry
 ): Promise<string> {
   // Fetch existing history from the database
   const existingHistory = await getHistory();
@@ -12,7 +12,7 @@ export async function saveHistoryToDb(
   // Initialize an array to hold the updated history
   let updatedHistory: HistoryArray = [];
 
-  updatedHistory = [...(existingHistory ?? []), HistoryEntry];
+  updatedHistory = [...(existingHistory ?? []), historyEntry];
 
   // Save the updated history back to the database
   await doDatabaseTransaction(

@@ -9,6 +9,7 @@ const HistoryFormSchema = z.object({
   date: z.string(),
   title: z.string(),
   details: z.string(),
+  files: z.array(z.string()).optional(), // Update schema to include file
 });
 
 export async function addHistory(formData: any) {
@@ -24,8 +25,14 @@ export async function addHistory(formData: any) {
   }
 
   // Prepare data for insertion into the database
-  const { date, title, details } = validatedFields.data;
-  const historyData: HistoryEntry = { date, title, details };
+  const { date, title, details, files = [] } = validatedFields.data;
+
+  const historyData: HistoryEntry = {
+    date,
+    title,
+    details,
+    files,
+  };
 
   // Save to database and handle the result
   try {

@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import { addHistory } from "@/app/lib/actions/history";
-import { date, z } from "zod";
+import { z } from "zod";
 
 const HistoryFormSchema = z.object({
   title: z.string(),
   date: z.string(),
   details: z.string(),
-  // images: z.array(z.string()),
+  files: z.array(z.string()).optional(), // Update schema to include file
 });
 
 export function AddHistoryModal({ onClose }: { onClose: () => void }) {
@@ -19,10 +19,13 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
     date: formattedDate,
     title: "",
     details: "",
+    files: [] as string[], // Add file to state
   });
 
   // Handle form field changes
-  const handleChange = (e: { target: { id: any; value: any; type: any } }) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -30,8 +33,32 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
     }));
   };
 
+  // Handle file input change
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const filePromises = Array.from(files).map(async (file) => {
+        const reader = new FileReader();
+        return new Promise<string>((resolve, reject) => {
+          reader.onloadend = () => {
+            const base64String = reader.result?.toString().split(",")[1] || "";
+            resolve(base64String);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      });
+
+      const base64file = await Promise.all(filePromises);
+      setFormData((prev) => ({
+        ...prev,
+        files: base64file,
+      }));
+    }
+  };
+
   // Handle form submission
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Validate the form data
@@ -109,7 +136,24 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
                   required
                 ></textarea>
               </div>
-
+              <div className="m-3 d-flex">
+                <label htmlFor="files" className="form-label col-3 h6">
+                  Files:
+                </label>
+                <input
+                  type="file"
+                  id="files"
+                  accept=".jpeg, .png, .jpg"
+                  multiple
+                  onChange={handleFileChange}
+                />
+              </div>
+              <div className="m-3 d-flex">
+                <label className="form-label col-3 h6"></label>
+                <p className="bg-body-secondary text-body-tertiary">
+                  Only accept .jpeg, .png, .jpg files
+                </p>
+              </div>
               <div className="modal-footer">
                 <button
                   type="button"

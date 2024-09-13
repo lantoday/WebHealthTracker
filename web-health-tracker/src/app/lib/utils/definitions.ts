@@ -33,6 +33,7 @@ export type HistoryEntry = {
   date: string;
   title: string;
   details: string;
+  files: string[];
 };
 
 export type HistoryArray = HistoryEntry[];
