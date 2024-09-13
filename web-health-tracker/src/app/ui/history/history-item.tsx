@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { HistoryEntry } from "@/app/lib/utils/definitions";
+import { HistoryEntry, ImageFile } from "@/app/lib/utils/definitions";
 import ImageModal from "./image-modal";
 
 interface HistoryItemProps {
@@ -8,11 +8,13 @@ interface HistoryItemProps {
 }
 
 const HistoryItem: React.FC<HistoryItemProps> = ({ data }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageName, setImageName] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleImageClick = (image: string) => {
-    setSelectedImage(image);
+  const handleImageClick = (file: ImageFile) => {
+    setImageUrl(file.url);
+    setImageName(file.name);
     setIsModalOpen(true);
   };
 
@@ -22,7 +24,8 @@ const HistoryItem: React.FC<HistoryItemProps> = ({ data }) => {
 
   useEffect(() => {
     if (!isModalOpen) {
-      setSelectedImage(null);
+      setImageUrl(null);
+      setImageName(null);
     }
   }, [isModalOpen]);
 
@@ -32,15 +35,13 @@ const HistoryItem: React.FC<HistoryItemProps> = ({ data }) => {
       <p className="text-muted mb-2 fw-bold">{data?.date}</p>
       <p className="text-muted">{data?.details}</p>
       <div>
-        {data?.files.map((base64Image, index) => (
+        {data?.files.map((file, index) => (
           <img
             key={index}
-            src={`data:image/jpeg;base64,${base64Image}`}
+            src={file.url}
             alt={`Thumbnail ${index}`}
             className="thumbnail"
-            onClick={() =>
-              handleImageClick(`data:image/jpeg;base64,${base64Image}`)
-            }
+            onClick={() => handleImageClick(file)}
             style={{
               cursor: "pointer",
               width: "100px",
@@ -52,7 +53,11 @@ const HistoryItem: React.FC<HistoryItemProps> = ({ data }) => {
       </div>
 
       {isModalOpen && (
-        <ImageModal imageUrl={selectedImage} onClose={handleCloseModal} />
+        <ImageModal
+          imageUrl={imageUrl}
+          imageName={imageName}
+          onClose={handleCloseModal}
+        />
       )}
     </li>
   );

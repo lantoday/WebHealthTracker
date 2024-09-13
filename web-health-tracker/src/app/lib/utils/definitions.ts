@@ -29,11 +29,16 @@ export type OthersEntry = {
 
 export type OthersArray = OthersEntry[];
 
+export type ImageFile = {
+  name: string;
+  url: string;
+};
+
 export type HistoryEntry = {
   date: string;
   title: string;
   details: string;
-  files: string[];
+  files: ImageFile[];
 };
 
 export type HistoryArray = HistoryEntry[];

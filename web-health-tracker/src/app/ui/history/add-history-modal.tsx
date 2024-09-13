@@ -4,11 +4,25 @@ import React, { useState } from "react";
 import { addHistory } from "@/app/lib/actions/history";
 import { z } from "zod";
 
+// Define the ImageFile type
+type ImageFile = {
+  name: string;
+  url: string;
+};
+
+// Update the schema to include ImageFile
 const HistoryFormSchema = z.object({
   title: z.string(),
   date: z.string(),
   details: z.string(),
-  files: z.array(z.string()).optional(), // Update schema to include file
+  files: z
+    .array(
+      z.object({
+        name: z.string(),
+        url: z.string(),
+      })
+    )
+    .optional(),
 });
 
 export function AddHistoryModal({ onClose }: { onClose: () => void }) {
@@ -19,7 +33,7 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
     date: formattedDate,
     title: "",
     details: "",
-    files: [] as string[], // Add file to state
+    files: [] as ImageFile[],
   });
 
   // Handle form field changes
@@ -39,20 +53,20 @@ export function AddHistoryModal({ onClose }: { onClose: () => void }) {
     if (files) {
       const filePromises = Array.from(files).map(async (file) => {
         const reader = new FileReader();
-        return new Promise<string>((resolve, reject) => {
+        return new Promise<ImageFile>((resolve, reject) => {
           reader.onloadend = () => {
-            const base64String = reader.result?.toString().split(",")[1] || "";
-            resolve(base64String);
+            const url = reader.result?.toString() || "";
+            resolve({ name: file.name, url });
           };
           reader.onerror = reject;
           reader.readAsDataURL(file);
         });
       });
 
-      const base64file = await Promise.all(filePromises);
+      const imageFiles = await Promise.all(filePromises);
       setFormData((prev) => ({
         ...prev,
-        files: base64file,
+        files: imageFiles,
       }));
     }
   };

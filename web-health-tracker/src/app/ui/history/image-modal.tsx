@@ -2,11 +2,11 @@
 
 interface ImageModalProps {
   imageUrl: string | null;
-  // imageName: string | null;
+  imageName: string | null;
   onClose: () => void;
 }
 
-export function ImageModal({ imageUrl, onClose }: ImageModalProps) {
+export function ImageModal({ imageUrl, imageName, onClose }: ImageModalProps) {
   return (
     <>
       {!imageUrl && <p>There is no image to show</p>}
@@ -19,7 +19,7 @@ export function ImageModal({ imageUrl, onClose }: ImageModalProps) {
           >
             <div className="modal-content">
               <div className="modal-header">
-                {/* <h5 className="modal-title">Image name</h5> */}
+                <h5 className="modal-title">{imageName}</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -28,7 +28,7 @@ export function ImageModal({ imageUrl, onClose }: ImageModalProps) {
                 ></button>
               </div>
               <div className="modal-body">
-                <img src={imageUrl} alt="Selected" className="w-100" />
+                <img src={imageUrl} alt="history image" className="w-100" />
               </div>
             </div>
           </div>
