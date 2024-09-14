@@ -22,7 +22,7 @@ export async function saveOtherWorkoutDataToDb(
 
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: OthersArray, arg1: string) => any }) =>
       store.put(updatedOtherWorkoutData, ObjectKeyName.OTHERS)
   );
@@ -33,7 +33,7 @@ export async function saveOtherWorkoutDataToDb(
 export async function getOtherWorkoutData(): Promise<OthersArray | null> {
   const otherWorkoutData = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store) => store.get(ObjectKeyName.OTHERS)
   );
 

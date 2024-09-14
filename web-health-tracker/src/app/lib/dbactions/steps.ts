@@ -26,7 +26,7 @@ export async function saveStepsToDb(stepEntry: StepEntry): Promise<string> {
   // Save the updated steps back to the database
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: StepArray, arg1: string) => any }) =>
       store.put(updatedSteps, ObjectKeyName.STEPS)
   );
@@ -37,7 +37,7 @@ export async function saveStepsToDb(stepEntry: StepEntry): Promise<string> {
 export async function getSteps(): Promise<StepArray | null> {
   const steps = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store) => store.get(ObjectKeyName.STEPS)
   );
 

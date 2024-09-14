@@ -7,10 +7,7 @@ import History from "@/app/ui/history/history";
  * The names of object stores within Orange Twist's IndexedDB database.
  */
 export const ObjectStoreName = {
-  PROFILE: "profile",
-  EXERCISE: "exercise",
-  HISTORY: "history",
-  SLEEP: "sleep",
+  DATA: "data",
 } as const;
 export type ObjectStoreName = EnumTypeOf<typeof ObjectStoreName>;
 

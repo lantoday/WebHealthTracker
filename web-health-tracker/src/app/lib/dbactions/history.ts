@@ -17,7 +17,7 @@ export async function saveHistoryToDb(
   // Save the updated history back to the database
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.HISTORY,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: HistoryArray, arg1: string) => any }) =>
       store.put(updatedHistory, ObjectKeyName.HISTORY)
   );
@@ -28,7 +28,7 @@ export async function saveHistoryToDb(
 export async function getHistory(): Promise<HistoryArray | null> {
   const history = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.HISTORY,
+    ObjectStoreName.DATA,
     (store) => store.get(ObjectKeyName.HISTORY)
   );
 

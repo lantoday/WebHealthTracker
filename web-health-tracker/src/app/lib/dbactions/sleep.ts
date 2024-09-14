@@ -28,7 +28,7 @@ export async function saveSleepDataToDb(
   // Save the updated sleeps back to the database
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.SLEEP,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: SleepArray, arg1: string) => any }) =>
       store.put(updatedSleepData, ObjectKeyName.SLEEP)
   );
@@ -39,7 +39,7 @@ export async function saveSleepDataToDb(
 export async function getSleepData(): Promise<SleepArray | null> {
   const sleepData = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.SLEEP,
+    ObjectStoreName.DATA,
     (store) => store.get(ObjectKeyName.SLEEP)
   );
 

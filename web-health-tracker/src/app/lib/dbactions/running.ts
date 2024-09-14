@@ -21,7 +21,7 @@ export async function saveRunningDataToDb(
 
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: RunningArray, arg1: string) => any }) =>
       store.put(updatedRunningData, ObjectKeyName.RUNNING)
   );
@@ -32,7 +32,7 @@ export async function saveRunningDataToDb(
 export async function getRunningData(): Promise<RunningArray | null> {
   const runningData = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.EXERCISE,
+    ObjectStoreName.DATA,
     (store) => store.get(ObjectKeyName.RUNNING)
   );
 

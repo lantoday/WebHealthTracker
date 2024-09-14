@@ -5,7 +5,7 @@ import { ObjectKeyName } from "./ObjectKeyName";
 export async function saveProfileToDb(profile: Profile): Promise<string> {
   await doDatabaseTransaction(
     "readwrite",
-    ObjectStoreName.PROFILE,
+    ObjectStoreName.DATA,
     (store: { put: (arg0: Profile, arg1: string) => any }) =>
       store.put(profile, ObjectKeyName.PROFILE)
   );
@@ -18,7 +18,7 @@ export async function getProfile(): Promise<Profile | null> {
   console.log("getProfile");
   const profile = await doDatabaseTransaction(
     "readonly",
-    ObjectStoreName.PROFILE,
+    ObjectStoreName.DATA,
     (store: { get: (arg0: string) => any }) => store.get(ObjectKeyName.PROFILE)
   );
 
