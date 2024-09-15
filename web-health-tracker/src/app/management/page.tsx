@@ -7,9 +7,7 @@ import { getProfile } from "@/app/lib/dbactions/profile";
 import { Profile } from "@/app/lib/utils/definitions";
 import Loading from "@/app/ui/shared/loading";
 import ErrorPage from "@/app/ui/shared/error";
-
-import { exportData } from "@/app/lib/data/export/exportData";
-import { importData } from "@/app/lib/data/import/importData";
+import Tools from "@/app/ui/profile/tools";
 
 const ProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -35,32 +33,16 @@ const ProfilePage: React.FC = () => {
     <Layout>
       {loading && <Loading />}
       {error && <ErrorPage error={error} />}
-      <div>
-        <div className="m-3 p-2">
-          <div className="border">
-            <ProfileForm profile={profile} />
-          </div>
+      <div className="m-3 p-2">
+        <div className="border">
+          <ProfileForm profile={profile} />
         </div>
       </div>
-      <div>
-        <button className="btn btn-outline-primary" onClick={exportData}>
-          Export data
-        </button>
-        <button className="btn btn-outline-primary" onClick={importData}>
-          Import data
-        </button>
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => (window.location.href = "/management/upsert")}
-        >
-          Clear data
-        </button>
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => (window.location.href = "/management/upsert")}
-        >
-          Export settings
-        </button>
+
+      <div className="m-3 p-2">
+        <div className="border">
+          <Tools />
+        </div>
       </div>
     </Layout>
   );
