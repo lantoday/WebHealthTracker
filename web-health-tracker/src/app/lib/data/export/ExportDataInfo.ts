@@ -13,12 +13,12 @@ import { exportDataLikeSchema } from "./ExportDataLike";
  * Strict export data format used when constructing export data.
  */
 const exportDataSchema = exportDataLikeSchema.extend({
-  history: z.array(z.tuple([z.string(), HistoryFormSchema])),
-  others: z.array(z.tuple([z.string(), OtherWorkoutFormSchema])),
-  running: z.array(z.tuple([z.string(), RunningFormSchema])),
-  sleep: z.array(z.tuple([z.string(), SleepFormSchema])),
-  steps: z.array(z.tuple([z.string(), StepsFormSchema])),
-  profile: z.array(z.tuple([z.string(), ProfileFormSchema])),
+  history: z.array(HistoryFormSchema),
+  others: z.array(OtherWorkoutFormSchema),
+  running: z.array(RunningFormSchema),
+  sleep: z.array(SleepFormSchema),
+  steps: z.array(StepsFormSchema),
+  profile: ProfileFormSchema,
 });
 
 export type ExportDataInfo = z.infer<typeof exportDataSchema>;

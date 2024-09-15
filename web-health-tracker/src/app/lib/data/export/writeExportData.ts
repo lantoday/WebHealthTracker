@@ -19,21 +19,12 @@ export async function writeExportData(): Promise<ExportDataInfo> {
   const otherWorkoutData = await getOtherWorkoutData();
 
   const data: ExportDataInfo = {
-    history: (historyData ?? []).map((historyInfo) => [
-      historyInfo.date,
-      historyInfo,
-    ]),
-    others: (otherWorkoutData ?? []).map((otherWorkoutInfo) => [
-      otherWorkoutInfo.date,
-      otherWorkoutInfo,
-    ]),
-    running: (runningData ?? []).map((runningInfo) => [
-      runningInfo.date,
-      runningInfo,
-    ]),
-    sleep: (sleepData ?? []).map((sleepInfo) => [sleepInfo.date, sleepInfo]),
-    steps: (stepsData ?? []).map((stepsInfo) => [stepsInfo.date, stepsInfo]),
-    profile: profileData ? [[profileData.firstName, profileData]] : [], // Ensure profileData is of type Profile
+    history: historyData ?? [],
+    others: otherWorkoutData ?? [],
+    running: runningData ?? [],
+    sleep: sleepData ?? [],
+    steps: stepsData ?? [],
+    profile: profileData ?? ({} as any),
   };
 
   return data;
