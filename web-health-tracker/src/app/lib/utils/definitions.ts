@@ -1,7 +1,8 @@
+// Ensure the Profile type matches the schema
 export type Profile = {
   firstName: string;
   lastName: string;
-  gender: string;
+  gender: "male" | "female" | "prefer not to say";
   age: number;
   height: number;
   weight: number;

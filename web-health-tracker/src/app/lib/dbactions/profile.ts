@@ -10,7 +10,6 @@ export async function saveProfileToDb(profile: Profile): Promise<string> {
       store.put(profile, ObjectKeyName.PROFILE)
   );
 
-  console.log({ profile });
   return "Profile saved successfully!";
 }
 
@@ -22,7 +21,6 @@ export async function getProfile(): Promise<Profile | null> {
     (store: { get: (arg0: string) => any }) => store.get(ObjectKeyName.PROFILE)
   );
 
-  console.log({ profile });
   if (isProfile(profile)) {
     return profile;
   }
@@ -35,7 +33,9 @@ function isProfile(obj: any): obj is Profile {
     obj &&
     typeof obj.firstName === "string" &&
     typeof obj.lastName === "string" &&
-    typeof obj.gender === "string" &&
+    (obj.gender === "male" ||
+      obj.gender === "female" ||
+      obj.gender === "prefer not to say") &&
     typeof obj.age === "number" &&
     typeof obj.height === "number" &&
     typeof obj.weight === "number"

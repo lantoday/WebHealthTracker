@@ -8,6 +8,8 @@ import { Profile } from "@/app/lib/utils/definitions";
 import Loading from "@/app/ui/shared/loading";
 import ErrorPage from "@/app/ui/shared/error";
 
+import { exportData } from "@/app/lib/data/export/exportData";
+
 const ProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,10 +42,7 @@ const ProfilePage: React.FC = () => {
         </div>
       </div>
       <div>
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => (window.location.href = "/management/upsert")}
-        >
+        <button className="btn btn-outline-primary" onClick={exportData}>
           Export data
         </button>
         <button
