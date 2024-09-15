@@ -2,7 +2,7 @@
 
 import { saveOtherWorkoutDataToDb } from "@/app/lib/dbactions/other-workouts";
 import { OthersEntry } from "@/app/lib/utils/definitions";
-import { OtherWorkoutFormSchema } from "@/app/lib/data/type/OtherWorkoutInfo";
+import { OtherWorkoutFormSchema } from "@/app/lib/data/type/otherWorkoutInfo";
 // import { redirect } from "next/navigation";
 
 export async function addOtherWorkoutData(formData: any) {

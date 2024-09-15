@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { addSleepData } from "@/app/lib/actions/sleep";
-import { SleepFormSchema } from "@/app/lib/data/type/SleepInfo";
+import { SleepFormSchema } from "@/app/lib/data/type/sleepInfo";
 
 export function AddSleepDataModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

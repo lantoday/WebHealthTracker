@@ -2,7 +2,7 @@
 
 import { saveStepsToDb } from "@/app/lib/dbactions/steps";
 import { StepEntry } from "@/app/lib/utils/definitions";
-import { StepsFormSchema } from "@/app/lib/data/type/StepsInfo";
+import { StepsFormSchema } from "@/app/lib/data/type/stepsInfo";
 // import { redirect } from "next/navigation";
 
 export async function addSteps(formData: any) {

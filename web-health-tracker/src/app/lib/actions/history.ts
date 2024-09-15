@@ -2,7 +2,7 @@
 
 import { saveHistoryToDb } from "@/app/lib/dbactions/history";
 import { HistoryEntry, ImageFile } from "@/app/lib/utils/definitions";
-import { HistoryFormSchema } from "@/app/lib/data/type/HistoryInfo";
+import { HistoryFormSchema } from "@/app/lib/data/type/historyInfo";
 // import { redirect } from "next/navigation";
 
 export async function addHistory(formData: any) {

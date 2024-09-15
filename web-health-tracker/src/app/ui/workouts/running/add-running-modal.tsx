@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { addRunningData } from "@/app/lib/actions/running";
-import { RunningFormSchema } from "@/app/lib/data/type/RunningInfo";
+import { RunningFormSchema } from "@/app/lib/data/type/runningInfo";
 
 export function AddRunningModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

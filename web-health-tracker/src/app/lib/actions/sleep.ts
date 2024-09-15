@@ -2,7 +2,7 @@
 
 import { saveSleepDataToDb } from "@/app/lib/dbactions/sleep";
 import { SleepEntry } from "@/app/lib/utils/definitions";
-import { SleepFormSchema } from "@/app/lib/data/type/SleepInfo";
+import { SleepFormSchema } from "@/app/lib/data/type/sleepInfo";
 // import { redirect } from "next/navigation";
 
 export async function addSleepData(formData: any) {

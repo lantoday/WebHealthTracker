@@ -4,7 +4,7 @@
 import { redirect } from "next/navigation";
 import { Profile } from "@/app/lib/utils/definitions";
 import { saveProfileToDb } from "../dbactions/profile";
-import { ProfileFormSchema } from "@/app/lib/data/type/ProfileInfo";
+import { ProfileFormSchema } from "@/app/lib/data/type/profileInfo";
 
 export async function addProfile(prevState: any, formData: FormData) {
   const validatedFields = ProfileFormSchema.safeParse({

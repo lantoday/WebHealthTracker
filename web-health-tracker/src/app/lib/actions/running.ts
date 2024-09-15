@@ -2,7 +2,7 @@
 
 import { saveRunningDataToDb } from "@/app/lib/dbactions/running";
 import { RunningEntry } from "@/app/lib/utils/definitions";
-import { RunningFormSchema } from "@/app/lib/data/type/RunningInfo";
+import { RunningFormSchema } from "@/app/lib/data/type/runningInfo";
 // import { redirect } from "next/navigation";
 
 export async function addRunningData(formData: any) {

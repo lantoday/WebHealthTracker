@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { addOtherWorkoutData } from "@/app/lib/actions/other-workouts";
-import { OtherWorkoutFormSchema } from "@/app/lib/data/type/OtherWorkoutInfo";
+import { OtherWorkoutFormSchema } from "@/app/lib/data/type/otherWorkoutInfo";
 
 export function AddOtherWorkoutModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

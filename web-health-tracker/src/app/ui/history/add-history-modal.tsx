@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { addHistory } from "@/app/lib/actions/history";
-import { HistoryFormSchema } from "@/app/lib/data/type/HistoryInfo";
+import { HistoryFormSchema } from "@/app/lib/data/type/historyInfo";
 
 // Define the ImageFile type
 type ImageFile = {
