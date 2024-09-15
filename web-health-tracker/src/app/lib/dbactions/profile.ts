@@ -14,7 +14,6 @@ export async function saveProfileToDb(profile: Profile): Promise<string> {
 }
 
 export async function getProfile(): Promise<Profile | null> {
-  console.log("getProfile");
   const profile = await doDatabaseTransaction(
     "readonly",
     ObjectStoreName.DATA,

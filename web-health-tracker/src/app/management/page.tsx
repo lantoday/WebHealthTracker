@@ -9,6 +9,7 @@ import Loading from "@/app/ui/shared/loading";
 import ErrorPage from "@/app/ui/shared/error";
 
 import { exportData } from "@/app/lib/data/export/exportData";
+import { importData } from "@/app/lib/data/import/importData";
 
 const ProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -45,10 +46,7 @@ const ProfilePage: React.FC = () => {
         <button className="btn btn-outline-primary" onClick={exportData}>
           Export data
         </button>
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => (window.location.href = "/management/upsert")}
-        >
+        <button className="btn btn-outline-primary" onClick={importData}>
           Import data
         </button>
         <button

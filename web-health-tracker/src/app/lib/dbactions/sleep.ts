@@ -4,7 +4,7 @@ import { ObjectKeyName } from "./ObjectKeyName";
 
 // Function to save sleeps to the database
 export async function saveSleepDataToDb(
-  SleepEntry: SleepEntry
+  sleepEntry: SleepEntry
 ): Promise<string> {
   // Fetch existing sleeps from the database
   const existingSleepData = await getSleepData();
@@ -15,14 +15,14 @@ export async function saveSleepDataToDb(
   if (existingSleepData) {
     // Filter out any sleeps with the same date as the new sleep
     const filteredSleepData = existingSleepData.filter(
-      (sleep: SleepEntry) => sleep.date !== SleepEntry.date
+      (sleep: SleepEntry) => sleep.date !== sleepEntry.date
     );
 
     // Add the new sleep to the filtered list
-    updatedSleepData = [...filteredSleepData, SleepEntry];
+    updatedSleepData = [...filteredSleepData, sleepEntry];
   } else {
     // If no existing sleeps, start a new array with the current sleep
-    updatedSleepData = [SleepEntry];
+    updatedSleepData = [sleepEntry];
   }
 
   // Save the updated sleeps back to the database
@@ -47,4 +47,22 @@ export async function getSleepData(): Promise<SleepArray | null> {
     return sleepData;
   }
   return null;
+}
+
+export async function importSleepDataToDb(
+  sleepArray: SleepArray
+): Promise<string> {
+  if (!Array.isArray(sleepArray) || sleepArray.length === 0) {
+    return "Invalid sleep data!";
+  }
+
+  // Save the updated sleeps back to the database
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.DATA,
+    (store: { put: (arg0: SleepArray, arg1: string) => any }) =>
+      store.put(sleepArray, ObjectKeyName.SLEEP)
+  );
+
+  return "Sleep data saved successfully!";
 }

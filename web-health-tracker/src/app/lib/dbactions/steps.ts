@@ -46,3 +46,19 @@ export async function getSteps(): Promise<StepArray | null> {
   }
   return null;
 }
+
+export async function importStepsToDb(stepArray: StepArray): Promise<string> {
+  if (!Array.isArray(stepArray) || stepArray.length === 0) {
+    return "Invalid steps data!";
+  }
+
+  // Save the updated steps back to the database
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.DATA,
+    (store: { put: (arg0: StepArray, arg1: string) => any }) =>
+      store.put(stepArray, ObjectKeyName.STEPS)
+  );
+
+  return "Steps saved successfully!";
+}

@@ -3,7 +3,7 @@ import { OthersArray, OthersEntry } from "@/app/lib/utils/definitions";
 import { ObjectKeyName } from "./ObjectKeyName";
 
 export async function saveOtherWorkoutDataToDb(
-  OthersEntry: OthersEntry
+  othersEntry: OthersEntry
 ): Promise<string> {
   const existingOtherWorkoutData = await getOtherWorkoutData();
 
@@ -12,12 +12,12 @@ export async function saveOtherWorkoutDataToDb(
   if (existingOtherWorkoutData) {
     const filteredOtherWorkoutData = existingOtherWorkoutData.filter(
       (otherWorkoutData: OthersEntry) =>
-        otherWorkoutData.date !== OthersEntry.date
+        otherWorkoutData.date !== othersEntry.date
     );
 
-    updatedOtherWorkoutData = [...filteredOtherWorkoutData, OthersEntry];
+    updatedOtherWorkoutData = [...filteredOtherWorkoutData, othersEntry];
   } else {
-    updatedOtherWorkoutData = [OthersEntry];
+    updatedOtherWorkoutData = [othersEntry];
   }
 
   await doDatabaseTransaction(
@@ -41,4 +41,21 @@ export async function getOtherWorkoutData(): Promise<OthersArray | null> {
     return otherWorkoutData;
   }
   return null;
+}
+
+export async function importOtherWorkoutDataToDb(
+  othersArray: OthersArray
+): Promise<string> {
+  if (!Array.isArray(othersArray) || othersArray.length === 0) {
+    return "Invalid workout data!";
+  }
+
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.DATA,
+    (store: { put: (arg0: OthersArray, arg1: string) => any }) =>
+      store.put(othersArray, ObjectKeyName.OTHERS)
+  );
+
+  return "Workout data saved successfully!";
 }

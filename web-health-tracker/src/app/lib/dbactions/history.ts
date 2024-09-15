@@ -37,3 +37,21 @@ export async function getHistory(): Promise<HistoryArray | null> {
   }
   return null;
 }
+
+export async function importHistoryToDb(
+  historyArray: HistoryArray
+): Promise<string> {
+  // check if historyArray is an array and not empty
+  if (!Array.isArray(historyArray) || historyArray.length === 0) {
+    return "Invalid history data!";
+  }
+
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.DATA,
+    (store: { put: (arg0: HistoryArray, arg1: string) => any }) =>
+      store.put(historyArray, ObjectKeyName.HISTORY)
+  );
+
+  return "History data saved successfully!";
+}

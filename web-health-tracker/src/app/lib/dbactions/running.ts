@@ -41,3 +41,20 @@ export async function getRunningData(): Promise<RunningArray | null> {
   }
   return null;
 }
+
+export async function importRunningDataToDb(
+  runningArray: RunningArray
+): Promise<string> {
+  if (!Array.isArray(runningArray) || runningArray.length === 0) {
+    return "Invalid running data!";
+  }
+
+  await doDatabaseTransaction(
+    "readwrite",
+    ObjectStoreName.DATA,
+    (store: { put: (arg0: RunningArray, arg1: string) => any }) =>
+      store.put(runningArray, ObjectKeyName.RUNNING)
+  );
+
+  return "Running data saved successfully!";
+}
