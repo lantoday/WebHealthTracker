@@ -1,14 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { saveSleepDataToDb } from "@/app/lib/dbactions/sleep";
 import { SleepEntry } from "@/app/lib/utils/definitions";
+import { SleepFormSchema } from "@/app/lib/data/type/SleepInfo";
 // import { redirect } from "next/navigation";
-
-const SleepFormSchema = z.object({
-  date: z.string(),
-  hour: z.number(),
-});
 
 export async function addSleepData(formData: any) {
   // Validate the form data

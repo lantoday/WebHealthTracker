@@ -1,14 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { saveRunningDataToDb } from "@/app/lib/dbactions/running";
 import { RunningEntry } from "@/app/lib/utils/definitions";
+import { RunningFormSchema } from "@/app/lib/data/type/RunningInfo";
 // import { redirect } from "next/navigation";
-
-const RunningFormSchema = z.object({
-  date: z.string(),
-  kilometer: z.number(),
-});
 
 export async function addRunningData(formData: any) {
   // Validate the form data

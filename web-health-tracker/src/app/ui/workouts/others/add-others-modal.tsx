@@ -2,13 +2,7 @@
 
 import React, { useState } from "react";
 import { addOtherWorkoutData } from "@/app/lib/actions/other-workouts";
-import { z } from "zod";
-
-const OtherWorkoutFormSchema = z.object({
-  date: z.string(),
-  kilocalories: z.number(),
-  kilometer: z.number(),
-});
+import { OtherWorkoutFormSchema } from "@/app/lib/data/type/OtherWorkoutInfo";
 
 export function AddOtherWorkoutModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

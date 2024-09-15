@@ -1,35 +1,10 @@
 "use client";
 
-import { z } from "zod";
 // import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Profile } from "@/app/lib/utils/definitions";
 import { saveProfileToDb } from "../dbactions/profile";
-
-const ProfileFormSchema = z.object({
-  firstName: z.string({
-    invalid_type_error: "Please input your first name.",
-  }),
-  lastName: z.string({
-    invalid_type_error: "Please input your last name.",
-  }),
-  gender: z.enum(["male", "female", "prefer not to say"], {
-    invalid_type_error: "Please select a gender option.",
-  }),
-  age: z.coerce
-    .number()
-    .int()
-    .min(0, { message: "Age must be at least 0." })
-    .max(100, { message: "Age must be no more than 100." }),
-  height: z.coerce
-    .number()
-    .gt(0, { message: "Height must be greater than 0." }),
-
-  weight: z.coerce
-    .number()
-    .min(1, { message: "Weight must be at least 1." })
-    .max(300, { message: "Weight must be no more than 300." }),
-});
+import { ProfileFormSchema } from "@/app/lib/data/type/ProfileInfo";
 
 export async function addProfile(prevState: any, formData: FormData) {
   const validatedFields = ProfileFormSchema.safeParse({

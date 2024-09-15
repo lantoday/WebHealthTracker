@@ -1,14 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { saveStepsToDb } from "@/app/lib/dbactions/steps";
 import { StepEntry } from "@/app/lib/utils/definitions";
+import { StepsFormSchema } from "@/app/lib/data/type/StepsInfo";
 // import { redirect } from "next/navigation";
-
-const StepsFormSchema = z.object({
-  date: z.string(),
-  steps: z.number(),
-});
 
 export async function addSteps(formData: any) {
   // Validate the form data

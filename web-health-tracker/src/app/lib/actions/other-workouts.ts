@@ -1,15 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { saveOtherWorkoutDataToDb } from "@/app/lib/dbactions/other-workouts";
 import { OthersEntry } from "@/app/lib/utils/definitions";
+import { OtherWorkoutFormSchema } from "@/app/lib/data/type/OtherWorkoutInfo";
 // import { redirect } from "next/navigation";
-
-const OtherWorkoutFormSchema = z.object({
-  date: z.string(),
-  kilocalories: z.number(),
-  kilometer: z.number(),
-});
 
 export async function addOtherWorkoutData(formData: any) {
   // Validate the form data

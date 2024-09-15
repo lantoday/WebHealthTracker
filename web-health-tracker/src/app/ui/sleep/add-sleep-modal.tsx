@@ -2,12 +2,7 @@
 
 import React, { useState } from "react";
 import { addSleepData } from "@/app/lib/actions/sleep";
-import { z } from "zod";
-
-const SleepDataFormSchema = z.object({
-  date: z.string(),
-  hour: z.number(),
-});
+import { SleepFormSchema } from "@/app/lib/data/type/SleepInfo";
 
 export function AddSleepDataModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];
@@ -32,7 +27,7 @@ export function AddSleepDataModal({ onClose }: { onClose: () => void }) {
     e.preventDefault();
 
     // Validate the form data
-    const result = SleepDataFormSchema.safeParse(formData);
+    const result = SleepFormSchema.safeParse(formData);
     if (!result.success) {
       // Handle validation errors
       console.error(result.error);

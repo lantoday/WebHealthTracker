@@ -2,12 +2,7 @@
 
 import React, { useState } from "react";
 import { addSteps } from "@/app/lib/actions/steps";
-import { z } from "zod";
-
-const StepsFormSchema = z.object({
-  date: z.string(),
-  steps: z.number(),
-});
+import { StepsFormSchema } from "@/app/lib/data/type/StepsInfo";
 
 export function AddStepsModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

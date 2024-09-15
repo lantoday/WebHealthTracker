@@ -1,23 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { saveHistoryToDb } from "@/app/lib/dbactions/history";
 import { HistoryEntry, ImageFile } from "@/app/lib/utils/definitions";
+import { HistoryFormSchema } from "@/app/lib/data/type/HistoryInfo";
 // import { redirect } from "next/navigation";
-
-const HistoryFormSchema = z.object({
-  title: z.string(),
-  date: z.string(),
-  details: z.string(),
-  files: z
-    .array(
-      z.object({
-        name: z.string(),
-        url: z.string(),
-      })
-    )
-    .optional(),
-});
 
 export async function addHistory(formData: any) {
   // Validate the form data

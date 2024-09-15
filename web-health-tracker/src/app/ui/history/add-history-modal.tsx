@@ -2,28 +2,13 @@
 
 import React, { useState } from "react";
 import { addHistory } from "@/app/lib/actions/history";
-import { z } from "zod";
+import { HistoryFormSchema } from "@/app/lib/data/type/HistoryInfo";
 
 // Define the ImageFile type
 type ImageFile = {
   name: string;
   url: string;
 };
-
-// Update the schema to include ImageFile
-const HistoryFormSchema = z.object({
-  title: z.string(),
-  date: z.string(),
-  details: z.string(),
-  files: z
-    .array(
-      z.object({
-        name: z.string(),
-        url: z.string(),
-      })
-    )
-    .optional(),
-});
 
 export function AddHistoryModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];

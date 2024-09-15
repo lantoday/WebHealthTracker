@@ -2,12 +2,7 @@
 
 import React, { useState } from "react";
 import { addRunningData } from "@/app/lib/actions/running";
-import { z } from "zod";
-
-const RunningFormSchema = z.object({
-  date: z.string(),
-  kilometer: z.number(),
-});
+import { RunningFormSchema } from "@/app/lib/data/type/RunningInfo";
 
 export function AddRunningModal({ onClose }: { onClose: () => void }) {
   const formattedDate = new Date().toISOString().split("T")[0];
