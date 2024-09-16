@@ -35,26 +35,3 @@ export function getDatabase(): Promise<IDBDatabase> {
     request.addEventListener("blocked", reject);
   });
 }
-
-export function deleteDatabase(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.deleteDatabase(dbName);
-
-    request.addEventListener("success", () => {
-      resolve(); // Indicate success without resolving with the result
-    });
-
-    request.addEventListener("error", (event) => {
-      reject(
-        (event.target as IDBOpenDBRequest).error ||
-          new Error("An unknown error occurred")
-      );
-    });
-
-    request.addEventListener("blocked", () => {
-      window.alert("The database deleted");
-      window.location.reload();
-      // reject(new Error("The database is blocked and cannot be deleted"));
-    });
-  });
-}

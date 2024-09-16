@@ -1,6 +1,6 @@
 "use client";
 
-import type { ObjectStoreName } from "./ObjectStoreName";
+import { ObjectStoreName } from "./ObjectStoreName";
 import { getDatabase } from "./getDatabase";
 
 /**
@@ -40,6 +40,21 @@ export function doDatabaseTransaction(
         const request = callback(objectStore);
 
         request.addEventListener("success", () => resolve(request.result));
+        request.addEventListener("error", () => reject(request.error));
+      })
+      .catch(reject);
+  });
+}
+
+export function clearData(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    getDatabase()
+      .then((db) => {
+        const transaction = db.transaction(ObjectStoreName.DATA, "readwrite");
+        const objectStore = transaction.objectStore(ObjectStoreName.DATA);
+        const request = objectStore.clear();
+
+        request.addEventListener("success", () => resolve());
         request.addEventListener("error", () => reject(request.error));
       })
       .catch(reject);
