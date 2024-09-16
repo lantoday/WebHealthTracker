@@ -1,5 +1,6 @@
 import { exportData } from "@/app/lib/data/export/exportData";
 import { importData } from "@/app/lib/data/import/importData";
+import { deleteDatabase } from "@/app/lib/indexedDB/getDatabase";
 
 export function Tools() {
   return (
@@ -22,7 +23,7 @@ export function Tools() {
           </button>
           <button
             className="btn btn-outline-primary btn-lg"
-            onClick={() => (window.location.href = "/management/upsert")}
+            onClick={deleteDatabase}
           >
             Clear data
           </button>
