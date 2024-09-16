@@ -22,5 +22,8 @@ export async function readExportDataFromFile(): Promise<ExportDataLike | null> {
     throw new Error("Selected file's contents are not shaped like export data");
   }
 
+  window.alert("Data imported successfully!");
+  window.location.reload();
+
   return data;
 }

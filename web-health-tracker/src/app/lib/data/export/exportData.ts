@@ -7,4 +7,5 @@ import { writeExportData } from "./writeExportData";
 export async function exportData(): Promise<void> {
   const data = await writeExportData();
   saveExportDataAsFile(data);
+  window.alert("Data exported successfully!");
 }

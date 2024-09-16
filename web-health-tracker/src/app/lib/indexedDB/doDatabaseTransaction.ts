@@ -2,7 +2,6 @@
 
 import type { ObjectStoreName } from "./ObjectStoreName";
 import { getDatabase } from "./getDatabase";
-import { useEffect, useState } from "react";
 
 /**
  * The file copy from https://github.com/Cipscis/orange-twist
