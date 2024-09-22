@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
         <ul className="nav flex-column">
           <li className="navbar-brand me-0 bg-dark d-flex justify-content-center bg-gradient">
             <a className="nav-link text-light" aria-current="page" href="/">
-              <span className="h5">Web Health Tracker</span>
+              <span className="h5">WebHealthTracker</span>
             </a>
           </li>
           {/* <li

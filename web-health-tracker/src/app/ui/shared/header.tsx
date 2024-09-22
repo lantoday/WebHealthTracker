@@ -7,7 +7,7 @@ const Header: React.FC = () => {
         className="navbar-brand col-md-3 col-lg-3 me-0 bg-dark d-flex justify-content-center bg-gradient"
         href="/"
       >
-        <span className="h5">Web Health Tracker</span>
+        <span className="h5">WebHealthTracker</span>
       </a>
       <button
         className="navbar-toggler position-absolute d-md-none collapsed"

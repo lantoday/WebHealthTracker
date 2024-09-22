@@ -174,3 +174,44 @@ body {
   width: 11px;
   content: "";
 }
+
+.introduction-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.introduction-header,
+.features-section,
+.why-choose {
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #2c3e50;
+}
+
+h2 {
+  font-size: 2em;
+  color: #2980b9;
+}
+
+.features-list,
+.benefits-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features-list li,
+.benefits-list li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.introduction-footer {
+  text-align: center;
+  font-size: 1.1em;
+  color: #7f8c8d;
+}
