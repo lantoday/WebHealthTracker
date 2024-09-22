@@ -46,9 +46,9 @@ const History: React.FC = () => {
       {!hasHistory && (
         <div>
           <div className="py-5 p-3">
-            <div className="d-flex justify-content-center border">
+            <div className="d-flex justify-content-center border rounded shadow-sm">
               <div className="p-5">
-                <p className="h6">No history data found</p>
+                <p className="fs-5">No medical history data found</p>
                 <hr />
                 <button
                   type="button"

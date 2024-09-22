@@ -71,7 +71,7 @@ export function ProfileForm({ profile }: ProfileFormProps) {
       {!profile && (
         <div className="d-flex justify-content-center">
           <div className="p-5">
-            <p className="h6">No profile found</p>
+            <p className="fs-5">No profile found</p>
             <hr />
 
             <button

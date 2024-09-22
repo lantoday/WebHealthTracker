@@ -104,9 +104,9 @@ export function SleepComponent() {
       )}
 
       {!hasStepsData && (
-        <div className="d-flex justify-content-center mt-5 border">
+        <div className="d-flex justify-content-center mt-5 border rounded shadow-sm">
           <div className="p-5">
-            <p className="h6">No sleep data found</p>
+            <p className="fs-5">No sleep data found</p>
             <hr />
             <button
               type="button"

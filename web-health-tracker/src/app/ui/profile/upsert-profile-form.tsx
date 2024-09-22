@@ -27,7 +27,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* first name */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="firstNameLabel" className="form-label h6">
+          <label htmlFor="firstNameLabel" className="form-label fs-6">
             First Name:
           </label>
         </div>
@@ -45,7 +45,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* last name */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="lastNameLabel" className="form-label h6">
+          <label htmlFor="lastNameLabel" className="form-label fs-6">
             Last Name:
           </label>
         </div>
@@ -63,7 +63,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* gender */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="gender" className="form-label h6">
+          <label htmlFor="gender" className="form-label fs-6">
             Gender:
           </label>
         </div>
@@ -87,7 +87,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* age */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="ageLabel" className="form-label h6">
+          <label htmlFor="ageLabel" className="form-label fs-6">
             Age:
           </label>
         </div>
@@ -105,7 +105,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* height */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="heightLabel" className="form-label h6">
+          <label htmlFor="heightLabel" className="form-label fs-6">
             Height:
           </label>
         </div>
@@ -124,7 +124,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
       {/* weight */}
       <div className="row align-items-center m-4">
         <div className="col-2">
-          <label htmlFor="weightLabel" className="form-label h6">
+          <label htmlFor="weightLabel" className="form-label fs-6">
             Weight:
           </label>
         </div>
@@ -141,7 +141,7 @@ export function UpsertProfileForm({ profile }: UpsertProfileFormProps) {
         </div>
       </div>
 
-      <div className="d-flex flex-row-reverse m-4 p-2 h6">
+      <div className="d-flex flex-row-reverse m-4 p-2 fs-6">
         <button type="submit" className="btn btn-outline-primary">
           Submit
         </button>

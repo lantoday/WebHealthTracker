@@ -64,7 +64,7 @@ const ExercisePage: React.FC = () => {
           </li>
         </ul>
 
-        <div className="tab-content mt-3">
+        <div className="tab-content p-5">
           <div
             className={`tab-pane fade ${
               activeTab === "steps" ? "show active" : ""
