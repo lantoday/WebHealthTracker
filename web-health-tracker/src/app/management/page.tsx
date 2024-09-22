@@ -34,13 +34,13 @@ const ProfilePage: React.FC = () => {
       {loading && <Loading />}
       {error && <ErrorPage error={error} />}
       <div className="p-3">
-        <div className="border rounded">
+        <div className="border rounded shadow-sm mt-5">
           <ProfileForm profile={profile} />
         </div>
       </div>
 
       <div className="p-3 mt-4">
-        <div className="border rounded">
+        <div className="border rounded shadow-sm">
           <Tools />
         </div>
       </div>
