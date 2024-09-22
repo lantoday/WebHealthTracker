@@ -19,11 +19,11 @@ const Navbar: React.FC = () => {
         <ul className="nav flex-column">
           <li className="navbar-brand me-0 bg-dark d-flex justify-content-center bg-gradient">
             <a className="nav-link text-light" aria-current="page" href="/">
-              <span className="h5">WebHealthTracker</span>
+              <span className="fs-5">WebHealthTracker</span>
             </a>
           </li>
           {/* <li
-            className={`p-3 m-0 nav-item h6 ${
+            className={`p-3 m-0 nav-item fs-6 ${
               activeItem === "/dashboard" ? "bg-primary" : ""
             }`}
           >
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
           </li> */}
           <hr className="m-0" />
           <li
-            className={`p-3 m-0 nav-item h6 ${
+            className={`p-3 m-0 nav-item fs-6 ${
               activeItem === "/workouts" ? "bg-primary" : ""
             }`}
           >
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           </li>
           <hr className="m-0" />
           <li
-            className={`p-3 m-0 nav-item h6 ${
+            className={`p-3 m-0 nav-item fs-6 ${
               activeItem === "/sleep" ? "bg-primary" : ""
             }`}
           >
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
           </li>
           <hr className="m-0" />
           <li
-            className={`p-3 m-0 nav-item h6 ${
+            className={`p-3 m-0 nav-item fs-6 ${
               activeItem === "/history" ? "bg-primary" : ""
             }`}
           >
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
           </li>
           <hr className="m-0" />
           <li
-            className={`p-3 m-0 nav-item h6 ${
+            className={`p-3 m-0 nav-item fs-6 ${
               activeItem === "/management" ? "bg-primary" : ""
             }`}
           >

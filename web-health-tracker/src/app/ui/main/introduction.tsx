@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Introduction = () => {
   return (
-    <div className="p-3">
+    <div className="p-3 mt-2">
       <Image
         width={1000}
         height={550}
@@ -11,7 +11,7 @@ const Introduction = () => {
         alt="Health Monitoring"
       />
 
-      <section className="mt-5">
+      <section className="mt-3 p-3">
         <h2>Features at a Glance</h2>
         <ul className="features-list">
           <li>
@@ -37,7 +37,7 @@ const Introduction = () => {
         </ul>
       </section>
 
-      <section className="mt-5">
+      <section className="mt-3 p-3">
         <h2>Why Choose WebHealthTracker?</h2>
         <ul className="benefits-list">
           <li>
