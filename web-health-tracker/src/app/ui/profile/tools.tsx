@@ -16,9 +16,11 @@ export function Tools() {
   };
   return (
     <>
-      <div className="p-4">
-        <div className="d-flex justify-content-center h4">Tool box</div>
+      <div className="p-5">
+        <div className="d-flex justify-content-center fs-2">Tool box</div>
+
         <hr />
+
         <div className="pt-3 d-flex justify-content-around">
           <button
             className="btn btn-outline-primary btn-lg"

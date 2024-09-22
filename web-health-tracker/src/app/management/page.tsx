@@ -33,14 +33,14 @@ const ProfilePage: React.FC = () => {
     <Layout>
       {loading && <Loading />}
       {error && <ErrorPage error={error} />}
-      <div className="m-3 p-2">
-        <div className="border">
+      <div className="p-3">
+        <div className="border rounded">
           <ProfileForm profile={profile} />
         </div>
       </div>
 
-      <div className="m-3 p-2">
-        <div className="border">
+      <div className="p-3 mt-4">
+        <div className="border rounded">
           <Tools />
         </div>
       </div>
