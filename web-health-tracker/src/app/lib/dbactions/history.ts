@@ -1,6 +1,11 @@
 import { ObjectStoreName, doDatabaseTransaction } from "../indexedDB";
-import { HistoryArray, HistoryEntry } from "@/app/lib/utils/definitions";
+import {
+  DisplayView,
+  HistoryArray,
+  HistoryEntry,
+} from "@/app/lib/utils/definitions";
 import { ObjectKeyName } from "./ObjectKeyName";
+import { sortDataByDates } from "@/app/lib/utils/sortDataByDates";
 
 // Function to save history to the database
 export async function saveHistoryToDb(
@@ -33,7 +38,8 @@ export async function getHistory(): Promise<HistoryArray | null> {
   );
 
   if (history instanceof Array) {
-    return history;
+    const sortedData = await sortDataByDates(history ?? [], DisplayView.ALL);
+    return sortedData;
   }
   return null;
 }
