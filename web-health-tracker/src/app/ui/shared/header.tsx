@@ -20,19 +20,6 @@ const Header: React.FC = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      {/* <input
-        className="form-control form-control-dark w-100"
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <div className="navbar-nav">
-        <div className="nav-item text-nowrap">
-          <a className="nav-link px-3" href="#">
-            Sign out
-          </a>
-        </div>
-      </div> */}
     </header>
   );
 };

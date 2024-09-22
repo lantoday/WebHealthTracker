@@ -11,7 +11,7 @@ const Introduction = () => {
         alt="Health Monitoring"
       />
 
-      <section className="features-section mt-5">
+      <section className="mt-5">
         <h2>Features at a Glance</h2>
         <ul className="features-list">
           <li>
@@ -37,7 +37,7 @@ const Introduction = () => {
         </ul>
       </section>
 
-      <section className="why-choose">
+      <section className="mt-5">
         <h2>Why Choose WebHealthTracker?</h2>
         <ul className="benefits-list">
           <li>
@@ -53,21 +53,18 @@ const Introduction = () => {
             your activity and sleep data.
           </li>
           <li>
-            <strong>Privacy First:</strong> Your data is secure and private
-            saving in your personal laptop
+            <strong>Privacy First:</strong> Your data is secure and privatly
+            stored in your personal laptop.
           </li>
         </ul>
       </section>
 
-      <br></br>
-      <br></br>
-      <br></br>
-      <footer className="introduction-footer">
+      <footer className="introduction-footer mt-5">
         <hr />
         <p>
           Join thousands of users taking proactive steps toward a healthier
-          life. Exploer WebHealthTracker today and start your journey to a
-          better you!
+          life. <br /> Exploer WebHealthTracker today and start your journey to
+          a better you!
         </p>
       </footer>
     </div>
