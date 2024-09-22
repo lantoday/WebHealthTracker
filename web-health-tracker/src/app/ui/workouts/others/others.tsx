@@ -108,13 +108,17 @@ export function RunningComponent() {
           <div className="p-5">
             <p className="fs-5">No workout data found</p>
             <hr />
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Add workout data
-            </button>
+
+            <div className="d-flex justify-content-center">
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Add workout data
+              </button>
+            </div>
+
             {isModalOpen && (
               <AddOtherWorkoutModal onClose={() => setIsModalOpen(false)} />
             )}

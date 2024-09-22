@@ -108,13 +108,16 @@ export function StepsComponent() {
           <div className="p-5">
             <p className="fs-5">No steps data found</p>
             <hr />
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Add steps
-            </button>
+            <div className="d-flex justify-content-center">
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Add steps
+              </button>
+            </div>
+
             {isModalOpen && (
               <AddStepsModal onClose={() => setIsModalOpen(false)} />
             )}

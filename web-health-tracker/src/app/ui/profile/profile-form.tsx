@@ -74,12 +74,14 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             <p className="fs-5">No profile found</p>
             <hr />
 
-            <button
-              className="btn btn-outline-primary"
-              onClick={() => (window.location.href = "/management/upsert")}
-            >
-              Add profile
-            </button>
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => (window.location.href = "/management/upsert")}
+              >
+                Add profile
+              </button>
+            </div>
           </div>
         </div>
       )}

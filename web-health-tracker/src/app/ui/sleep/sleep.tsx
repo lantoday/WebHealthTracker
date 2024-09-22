@@ -104,20 +104,25 @@ export function SleepComponent() {
       )}
 
       {!hasStepsData && (
-        <div className="d-flex justify-content-center mt-5 border rounded shadow-sm">
-          <div className="p-5">
-            <p className="fs-5">No sleep data found</p>
-            <hr />
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Add sleep data
-            </button>
-            {isModalOpen && (
-              <AddSleepDataModal onClose={() => setIsModalOpen(false)} />
-            )}
+        <div className="py-5 p-3">
+          <div className="d-flex justify-content-center border rounded shadow-sm">
+            <div className="p-5">
+              <p className="fs-5">No sleep data found</p>
+              <hr />
+              <div className="d-flex justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add sleep data
+                </button>
+              </div>
+
+              {isModalOpen && (
+                <AddSleepDataModal onClose={() => setIsModalOpen(false)} />
+              )}
+            </div>
           </div>
         </div>
       )}

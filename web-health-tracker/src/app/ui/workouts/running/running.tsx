@@ -108,13 +108,17 @@ export function RunningComponent() {
           <div className="p-5">
             <p className="fs-5">No running data found</p>
             <hr />
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Add running data
-            </button>
+
+            <div className="d-flex justify-content-center">
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Add running data
+              </button>
+            </div>
+
             {isModalOpen && (
               <AddRunningModal onClose={() => setIsModalOpen(false)} />
             )}
