@@ -38,23 +38,22 @@ const Introduction = () => {
       </section>
 
       <section className="mt-3 p-3">
-        <h2>Why Choose WebHealthTracker?</h2>
+        <h2>Why choose WebHealthTracker?</h2>
         <ul className="benefits-list">
           <li>
-            <strong>User-Friendly Interface:</strong> Navigate effortlessly
-            through our intuitive design.
+            <strong>User-Friendly Interface:</strong> Experience seamless
+            navigation with our intuitive design, making it easy for users of
+            all ages to access and utilize features without any hassle.
           </li>
           <li>
-            <strong>Customizable Goals:</strong> Set personalized goals that
-            align with your health aspirations.
+            <strong>Data Insights:</strong> Unlock actionable insights derived
+            from your activity and sleep data, empowering you to make informed
+            decisions that enhance your overall well-being.
           </li>
           <li>
-            <strong>Data Insights:</strong> Receive actionable insights based on
-            your activity and sleep data.
-          </li>
-          <li>
-            <strong>Privacy First:</strong> Your data is secure and privatly
-            stored in your personal laptop.
+            <strong>Privacy First:</strong> Enjoy peace of mind knowing that
+            your personal data is secure and stored privately on your device,
+            prioritizing your privacy and confidentiality at every step.
           </li>
         </ul>
       </section>
