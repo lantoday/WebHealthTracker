@@ -16,7 +16,7 @@ const ExercisePage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="mt-4">
+      <div className="mt-5 rounded shadow-sm">
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <a
@@ -64,7 +64,7 @@ const ExercisePage: React.FC = () => {
           </li>
         </ul>
 
-        <div className="tab-content p-5">
+        <div className="tab-content p-4">
           <div
             className={`tab-pane fade ${
               activeTab === "steps" ? "show active" : ""

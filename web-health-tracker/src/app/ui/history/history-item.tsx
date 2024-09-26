@@ -30,12 +30,13 @@ const HistoryItem: React.FC<HistoryItemProps> = ({ data }) => {
   }, [isModalOpen]);
 
   return (
-    <li className="timeline-item mb-5">
+    <li className="timeline-item mb-5 border rounded shadow-sm p-3">
       <h5 className="fw-bold">{data?.title}</h5>
       <p className="text-muted mb-2 fw-bold">{data?.date}</p>
       <p className="text-muted">{data?.details}</p>
       <div>
         {data?.files.map((file, index) => (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             key={index}
             src={file.url}

@@ -43,7 +43,7 @@ export function SleepComponent() {
   return (
     <>
       {hasStepsData && (
-        <div>
+        <div className="mt-5 p-4 rounded shadow-sm ">
           <div className="border">{renderChart()}</div>
           <div className="d-flex justify-content-between mt-4">
             <div className="d-flex justify-content-center flex-grow-1">
