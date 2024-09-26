@@ -4,8 +4,8 @@ Welcome to **WebHealthTracker**, your ultimate companion for monitoring and impr
 
 ## Table of Contents
 
-- [Why Choose WebHealthTracker?](#why-choose-webhealthtracker)
-- [How to Use WebHealthTracker?](#how-to-use-webhealthtracker)
+- [Why choose WebHealthTracker?](#why-choose-webhealthtracker)
+- [How to use WebHealthTracker?](#how-to-use-webhealthtracker)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -18,9 +18,9 @@ Welcome to **WebHealthTracker**, your ultimate companion for monitoring and impr
 
 ## How to use WebHealthTracker:
 
-- 🦶 **Tracker Your Activity:**: Input your daily steps, running kilometers, and workout data. The app provides visualizations for the last 30 days, 52 weeks, and 12 months, allowing you to choose between line or bar charts for long-term tracking.
-- 🏃 **Monitor Your Sleep:**: Enter your sleep hours to analyze your sleep patterns and gain insights into your rest quality.
-- 🏋️‍♂️ **Manage Your Medical History:**: Keep a detailed record of your medical history and upload medical results, ensuring that all your personal data is stored privately.
+- 🏋️‍♂️ **Tracker Your Activity:**: Input your daily steps, running kilometers, and workout data. The app provides visualizations for the last 30 days, 52 weeks, and 12 months, allowing you to choose between line or bar charts for long-term tracking.
+- 😴 **Monitor Your Sleep:**: Enter your sleep hours to analyze your sleep patterns and gain insights into your rest quality.
+- 📋 **Manage Your Medical History:**: Keep a detailed record of your medical history and upload medical results, ensuring that all your personal data is stored privately.
 
 ## Installation
 
