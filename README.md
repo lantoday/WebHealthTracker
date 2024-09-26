@@ -4,27 +4,23 @@ Welcome to **WebHealthTracker**, your ultimate companion for monitoring and impr
 
 ## Table of Contents
 
-- [Features at a Glance](#features-at-a-glance)
 - [Why Choose WebHealthTracker?](#why-choose-webhealthtracker)
+- [How to Use WebHealthTracker?](#how-to-use-webhealthtracker)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
-## Features at a Glance
+## Why choose WebHealthTracker?
 
-- 🦶 **Step Tracker**: Stay active and reach your daily goals with real-time tracking of your steps.
-- 🏃 **Running Log**: Record your runs, monitor your pace, and watch your progress over time.
-- 🏋️‍♂️ **Workout Record**: Track personalized workouts tailored to your fitness level and preferences.
-- 😴 **Sleep Monitor**: Analyze your sleep patterns and gain insights into improving your rest.
-- 📋 **Medical History**: Keep a detailed record of your medical history for easy reference during doctor visits.
+- **User-Friendly Interface**: Experience seamless navigation with our intuitive design, making it easy for users of all ages to access and utilize features without any hassle.
+- **Data Insights**: Unlock actionable insights derived from your activity and sleep data, empowering you to make informed decisions that enhance your overall well-being.
+- **Privacy First**: Enjoy peace of mind knowing that your personal data is secure and stored privately on your device, prioritizing your privacy and confidentiality at every step.
 
-## Why Choose WebHealthTracker?
+## How to use WebHealthTracker:
 
-- **User-Friendly Interface**: Navigate effortlessly through our intuitive design.
-- **Customizable Goals**: Set personalized goals that align with your health aspirations.
-- **Data Insights**: Receive actionable insights based on your activity and sleep data.
-- **Privacy First**: Your data is secure and privately stored on your personal device.
+- 🦶 **Tracker Your Activity:**: Input your daily steps, running kilometers, and workout data. The app provides visualizations for the last 30 days, 52 weeks, and 12 months, allowing you to choose between line or bar charts for long-term tracking.
+- 🏃 **Monitor Your Sleep:**: Enter your sleep hours to analyze your sleep patterns and gain insights into your rest quality.
+- 🏋️‍♂️ **Manage Your Medical History:**: Keep a detailed record of your medical history and upload medical results, ensuring that all your personal data is stored privately.
 
 ## Installation
 
@@ -33,7 +29,7 @@ To get started with WebHealthTracker, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/webhealthtracker.git
+   git clone https://github.com/lantoday/WebHealthTracker.git
    ```
 
 2. Navigate to the project directory:
