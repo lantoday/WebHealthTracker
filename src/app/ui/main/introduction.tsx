@@ -3,7 +3,11 @@ import React from "react";
 const Introduction = () => {
   return (
     <div className="p-3 mt-2">
-      <img className="w-100" src="introduction.jpg" alt="Health Monitoring" />
+      <img
+        className="w-100"
+        src="/WebHealthTracker/introduction.jpg"
+        alt="Health Monitoring"
+      />
 
       <section className="mt-3 p-3">
         <h2>Features at a Glance</h2>
