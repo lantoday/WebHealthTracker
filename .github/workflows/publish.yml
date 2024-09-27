@@ -33,7 +33,7 @@ jobs:
         run: npx next build
 
       - name: List Files 🔍
-        run: ls -R
+        run: ls -R out
 
       - name: Upload artifact 📡
         if: github.ref == 'refs/heads/main'
