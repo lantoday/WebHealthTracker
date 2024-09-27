@@ -5,9 +5,4 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
-// next.config.js
-module.exports = {
-  output: "export",
-};
-
 export default nextConfig;
