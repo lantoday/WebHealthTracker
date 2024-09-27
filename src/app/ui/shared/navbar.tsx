@@ -18,11 +18,7 @@ const Navbar: React.FC = () => {
       <div className="position-sticky">
         <ul className="nav flex-column">
           <li className="navbar-brand me-0 bg-dark d-flex justify-content-center bg-gradient">
-            <a
-              className="nav-link text-light"
-              aria-current="page"
-              href="/WebHealthTracker"
-            >
+            <a className="nav-link text-light" aria-current="page" href="/">
               <span className="fs-5">WebHealthTracker</span>
             </a>
           </li>
@@ -44,12 +40,12 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item fs-6 ${
-              activeItem === "/WebHealthTracker/workouts" ? "bg-primary" : ""
+              activeItem === "/workouts" ? "bg-primary" : ""
             }`}
           >
             <a
               className={`nav-link ${
-                activeItem === "/WebHealthTracker/workouts" ? "text-light" : ""
+                activeItem === "/workouts" ? "text-light" : ""
               }`}
               href="/workouts"
               onClick={() => setActiveItem("/workouts")}
@@ -60,15 +56,15 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item fs-6 ${
-              activeItem === "/WebHealthTracker/sleep" ? "bg-primary" : ""
+              activeItem === "/sleep" ? "bg-primary" : ""
             }`}
           >
             <a
               className={`nav-link ${
-                activeItem === "/WebHealthTracker/sleep" ? "text-light" : ""
+                activeItem === "/sleep" ? "text-light" : ""
               }`}
-              href="/WebHealthTracker/sleep"
-              onClick={() => setActiveItem("/WebHealthTracker/sleep")}
+              href="/sleep"
+              onClick={() => setActiveItem("/sleep")}
             >
               Sleep data
             </a>
@@ -76,15 +72,15 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item fs-6 ${
-              activeItem === "/WebHealthTracker/history" ? "bg-primary" : ""
+              activeItem === "/history" ? "bg-primary" : ""
             }`}
           >
             <a
               className={`nav-link ${
-                activeItem === "/WebHealthTracker/history" ? "text-light" : ""
+                activeItem === "/history" ? "text-light" : ""
               }`}
-              href="/WebHealthTracker/history"
-              onClick={() => setActiveItem("/WebHealthTracker/history")}
+              href="/history"
+              onClick={() => setActiveItem("/history")}
             >
               Medical history
             </a>
@@ -92,17 +88,15 @@ const Navbar: React.FC = () => {
           <hr className="m-0" />
           <li
             className={`p-3 m-0 nav-item fs-6 ${
-              activeItem === "/WebHealthTracker/management" ? "bg-primary" : ""
+              activeItem === "/management" ? "bg-primary" : ""
             }`}
           >
             <a
               className={`nav-link ${
-                activeItem === "/WebHealthTracker/management"
-                  ? "text-light"
-                  : ""
+                activeItem === "/management" ? "text-light" : ""
               }`}
               href="/management"
-              onClick={() => setActiveItem("/WebHealthTracker/management")}
+              onClick={() => setActiveItem("/management")}
             >
               Management
             </a>
