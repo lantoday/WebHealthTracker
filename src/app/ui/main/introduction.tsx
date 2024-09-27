@@ -1,13 +1,11 @@
 import React from "react";
-import Image from "next/image";
 
 const Introduction = () => {
   return (
     <div className="p-3 mt-2">
-      <Image
-        width={1000}
-        height={550}
-        src="/introduction.jpg"
+      <img
+        className="w-100"
+        src="/WebHealthTracker/introduction.jpg"
         alt="Health Monitoring"
       />
 
