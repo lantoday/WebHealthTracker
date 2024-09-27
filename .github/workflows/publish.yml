@@ -33,13 +33,13 @@ jobs:
         run: npx next build
 
       - name: List Files 🔍
-        run: ls -R out
+        run: ls -R
 
       - name: Upload artifact 📡
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: .
 
   deploy:
     environment:
