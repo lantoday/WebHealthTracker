@@ -2,6 +2,8 @@
   "name": "web-health-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lantoday.github.io/WebHealthTracker/",
+  "author": "Lan Chen",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
