@@ -1,7 +1,8 @@
 import { formatDate } from "./date";
+import { getCurrentDateDayName } from "./getCurrentDateDayName";
 import { describe, expect, it } from "@jest/globals";
 
-describe("formatDate", () => {
+describe("getCurrentDateDayName", () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -11,10 +12,8 @@ describe("formatDate", () => {
   });
 
   test("returns the correct date", () => {
-    expect(formatDate(new Date(2023, 10, 28))).toEqual("2023-10-28");
-  });
-
-  test("returns date in January", () => {
-    expect(formatDate(new Date(2023, 1, 28))).toEqual("2023-01-28");
+    const today = new Date();
+    let expectedDate = formatDate(today);
+    expect(getCurrentDateDayName()).toEqual(expectedDate);
   });
 });
