@@ -1,4 +1,4 @@
-import { formatDate } from "./date";
+import { formatDate } from "./formatDate";
 
 /**
  * Gets the formatted day name for the current date,

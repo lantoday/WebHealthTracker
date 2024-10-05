@@ -1,4 +1,4 @@
-import { formatDate } from "./date";
+import { formatDate } from "./formatDate";
 import { getCurrentDateDayName } from "./getCurrentDateDayName";
 import { describe, expect, it } from "@jest/globals";
 
