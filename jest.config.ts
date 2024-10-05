@@ -195,6 +195,12 @@ const config: Config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
+  // Allow tests to be written in TypeScript using ESM syntax
+
+  preset: "ts-jest/presets/default-esm",
+
+  passWithNoTests: true,
 };
 
 export default config;
