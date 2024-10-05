@@ -19,7 +19,9 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             <div>
               <button
                 className="btn btn-sm"
-                onClick={() => (window.location.href = "/management/upsert")}
+                onClick={() =>
+                  (window.location.href = "/WebHealthTracker/management/upsert")
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +79,9 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             <div className="d-flex justify-content-center">
               <button
                 className="btn btn-outline-primary"
-                onClick={() => (window.location.href = "/management/upsert")}
+                onClick={() =>
+                  (window.location.href = "/WebHealthTracker/management/upsert")
+                }
               >
                 Add profile
               </button>
